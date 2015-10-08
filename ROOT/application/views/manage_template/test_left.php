@@ -37,7 +37,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="#" onclick="change_content('index.html')"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="#" onclick="change_content('test_index')"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#" onclick="change_content('Charts.html')"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
