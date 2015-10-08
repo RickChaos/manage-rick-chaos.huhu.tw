@@ -14,10 +14,10 @@
 </head>
 
 <frameset id="Frame" rows="55,*" framespacing="0" frameborder="no" border="0">
-	<frame id="topFrame" name="topFrame" scrolling="No" noresize="noresize" title="topFrame" src="<?php echo base_url("test_top.php")?>">
+	<frame id="topFrame" name="topFrame" scrolling="No" noresize="noresize" title="topFrame" src="<?php echo base_url("manage_template/test_top")?>">
 	<frameset id="menuFram" cols="250,*" framespacing="0" frameborder="no" border="0">
 		<frame id="leftFrame" name="leftFrame" scrolling="auto" noresize="noresize" title="leftFrame" src="<?php echo base_url("manage_template/test_left")?>">
-		<frame id="mainFrame" name="mainFrame" title="mainFrame" src="index.php">
+		<frame id="mainFrame" name="mainFrame" title="mainFrame" src="<?php echo base_url("manage_template/test_index")?>">
 	</frameset>
 </frameset>
 

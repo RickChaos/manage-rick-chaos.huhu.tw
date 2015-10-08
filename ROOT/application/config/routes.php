@@ -54,8 +54,13 @@ $route['login/check'] = 'login/check_user';
 
 $route['testdb/index'] = 'test_folder/testdb/index';  /*左方為Client路徑 : 右方為Server路徑*/
 $route['testdb/hashpassword/(:any)'] = 'test_folder/testdb/hashpassword/$1';  //測試hash password 函數
+
+/* manage_template route */
 $route['manage_template/index'] = 'manage_template/manage_template/index';
-$route['manage_template/test_left'] = 'manage_template/manage_template/test_left';
+$route['manage_template/test_left'] = 'manage_template/test_left';
+$route['manage_template/test_top'] = 'manage_template/test_top';
+$route['manage_template/test_index'] = 'manage_template/test_index';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
