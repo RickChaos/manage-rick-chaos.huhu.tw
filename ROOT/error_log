@@ -1,0 +1,31 @@
+[05-Oct-2015 15:16:57 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '/home/manageri/public_html/system/core/compat/mbstring.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/manageri/public_html/system/core/CodeIgniter.php on line 284
+[05-Oct-2015 15:17:02 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '/home/manageri/public_html/system/core/compat/mbstring.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/manageri/public_html/system/core/CodeIgniter.php on line 284
+[05-Oct-2015 21:09:56 Asia/Taipei] PHP Fatal error:  Cannot access parent:: when current class scope has no parent in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:11:44 Asia/Taipei] PHP Fatal error:  Cannot access parent:: when current class scope has no parent in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:12:38 Asia/Taipei] PHP Fatal error:  Cannot access parent:: when current class scope has no parent in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:12:40 Asia/Taipei] PHP Fatal error:  Cannot access parent:: when current class scope has no parent in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:13:11 Asia/Taipei] PHP Fatal error:  Call to a member function model() on a non-object in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:13:54 Asia/Taipei] PHP Fatal error:  Call to a member function model() on a non-object in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:13:56 Asia/Taipei] PHP Fatal error:  Call to a member function model() on a non-object in /home/manageri/public_html/application/controllers/test_folder/Testdb.php on line 13
+[05-Oct-2015 21:14:34 Asia/Taipei] PHP Fatal error:  Call to undefined function validation_errors() in /home/manageri/public_html/application/views/test_folder/index.php on line 2
+[06-Oct-2015 23:08:23 Asia/Taipei] PHP Fatal error:  Call to undefined function base_url() in /home/manageri/public_html/application/views/login/login_page.php on line 9
+[06-Oct-2015 23:37:21 Asia/Taipei] PHP Parse error:  syntax error, unexpected '"></script>' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/manageri/public_html/application/views/login/login_page.php on line 44
+[07-Oct-2015 20:41:47 Asia/Taipei] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to CI_Exceptions::show_exception() must be an instance of Exception, instance of Error given, called in /home/manageri/public_html/system/core/Common.php on line 662 and defined in /home/manageri/public_html/system/core/Exceptions.php:190
+Stack trace:
+#0 /home/manageri/public_html/system/core/Common.php(662): CI_Exceptions->show_exception(Object(Error))
+#1 [internal function]: _exception_handler(Object(Error))
+#2 {main}
+  thrown in /home/manageri/public_html/system/core/Exceptions.php on line 190
+[07-Oct-2015 21:01:01 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_left.php on line 15
+[07-Oct-2015 21:05:30 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_left.php on line 17
+[07-Oct-2015 21:06:54 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_top.php on line 15
+[07-Oct-2015 21:07:27 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_top.php on line 15
+[07-Oct-2015 21:07:30 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_top.php on line 15
+[07-Oct-2015 21:10:10 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_top.php on line 15
+[07-Oct-2015 21:16:22 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_left.php on line 15
+[07-Oct-2015 21:22:25 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_left.php on line 15
+[07-Oct-2015 21:23:37 Asia/Taipei] PHP Fatal error:  Call to a member function helper() on a non-object in /home/manageri/public_html/application/controllers/manage_template/Manage_template.php on line 11
+[07-Oct-2015 21:25:29 Asia/Taipei] PHP Fatal error:  Call to undefined function css_url() in /home/manageri/public_html/application/views/manage_template/test_left.php on line 15
+[07-Oct-2015 23:58:09 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
+[07-Oct-2015 23:59:30 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
+[07-Oct-2015 23:59:33 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
