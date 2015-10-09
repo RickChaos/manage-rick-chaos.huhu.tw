@@ -24,4 +24,5 @@ class Manage_template extends CI_Controller
     public function test_index(){
         $this->load->view('manage_template/index');
     }
+
 }
