@@ -58,18 +58,14 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
+								<?php /*$data['Todolist']=$this->Manage_Template_Model->getAll();
+								foreach($Todolist as $Todolist_Item):
+								*/?>
 								<a href="#" class="list-group-item">
-									<span class="badge">just now</span>
-									<i class="fa fa-fw fa-calendar"></i> Calendar updated
+									<span class="badge"><?php //$Todolist_Item['PostTime'] ?></span>
+									<i class="fa fa-fw fa-calendar"></i> <?php //$Todolist_Item['Title'] ?>
 								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">4 minutes ago</span>
-									<i class="fa fa-fw fa-comment"></i> Commented on a post
-								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">23 minutes ago</span>
-									<i class="fa fa-fw fa-truck"></i> Order 392 shipped
-								</a>
+								<?php //endforeach ?>
 							</div>
 							<div class="text-right">
 								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
