@@ -18,6 +18,7 @@ class Login extends CI_Controller
     public function index()
     {
         $this->load->view('login/login_page');
+
     }
 
     public function check_user()
