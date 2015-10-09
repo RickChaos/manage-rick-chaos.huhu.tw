@@ -41,7 +41,7 @@
 					</h1>
 					<ol class="breadcrumb">
 						<li class="active">
-							<i class="fa fa-dashboard"></i>News.
+							<i class="fa fa-dashboard"></i><a href="www.google.com"> News. </a>
 						</li>
 					</ol>
 				</div>
