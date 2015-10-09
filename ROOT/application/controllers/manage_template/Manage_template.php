@@ -10,6 +10,7 @@ class Manage_template extends CI_Controller
     {
 
         parent::__construct();//server的實體路徑
+        $this->load->model('manage_template/Manage_Template_Model');
     }
 
     public function index(){
@@ -22,7 +23,8 @@ class Manage_template extends CI_Controller
         $this->load->view('manage_template/test_top');
     }
     public function test_index(){
-        $this->load->view('manage_template/index');
+        $data['Todolist']=$this->Manage_Template_Model->get_Todo_list();
+        $this->load->view('manage_template/index',$data);
     }
 
 }

@@ -58,14 +58,13 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<?php /*$data['Todolist']=$this->Manage_Template_Model->getAll();
-								foreach($Todolist as $Todolist_Item):
-								*/?>
+								<?php foreach($Todolist as $Todolist_Item):
+								?>
 								<a href="#" class="list-group-item">
-									<span class="badge"><?php //$Todolist_Item['PostTime'] ?></span>
-									<i class="fa fa-fw fa-calendar"></i> <?php //$Todolist_Item['Title'] ?>
+									<span class="badge"><?php echo $Todolist_Item['PostTime'] ?></span>
+									<i class="fa fa-fw fa-calendar"></i> <?php echo $Todolist_Item['Title'] ?>
 								</a>
-								<?php //endforeach ?>
+								<?php endforeach ?>
 							</div>
 							<div class="text-right">
 								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
