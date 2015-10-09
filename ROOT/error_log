@@ -29,3 +29,4 @@ Stack trace:
 [07-Oct-2015 23:58:09 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
 [07-Oct-2015 23:59:30 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
 [07-Oct-2015 23:59:33 Asia/Taipei] PHP Fatal error:  Call to undefined function form_open() in /home/manageri/public_html/application/views/login/login_page.php on line 24
+[09-Oct-2015 14:49:28 Asia/Taipei] PHP Fatal error:  Call to a member function row() on a non-object in /home/manageri/public_html/application/models/login/Login_model.php on line 26

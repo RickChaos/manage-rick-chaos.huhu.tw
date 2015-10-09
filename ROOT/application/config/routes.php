@@ -49,11 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login'; //登入頁面
-$route['login/check'] = 'login/check_user';
 
+/*---- 測試區  ----*/
 $route['testdb/index'] = 'test_folder/testdb/index';  /*左方為Client路徑 : 右方為Server路徑*/
 $route['testdb/hashpassword/(:any)'] = 'test_folder/testdb/hashpassword/$1';  //測試hash password 函數
+
+/*---- 登入  ----*/
+$route['default_controller'] = 'login'; //登入頁面
+$route['login/check'] = 'login/check_user';
 
 /* manage_template route */
 $route['manage_template/index'] = 'manage_template/manage_template/index';
