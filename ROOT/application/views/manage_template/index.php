@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -58,10 +56,9 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<?php foreach($Todolist as $Todolist_Item):
-								?>
+								<?php foreach($Todolist as $Todolist_Item):?>
 								<a href="#" class="list-group-item">
-									<span class="badge"><?php echo $Todolist_Item['PostTime'] ?></span>
+									<span class="badge"><?php echo substr($Todolist_Item['PostTime'],0,10) ?></span>
 									<i class="fa fa-fw fa-calendar"></i> <?php echo $Todolist_Item['Title'] ?>
 								</a>
 								<?php endforeach ?>
