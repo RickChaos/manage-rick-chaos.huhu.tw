@@ -8,6 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="<?php echo css_url("bootstrap.min.css");?>" rel="stylesheet">
     <link href="<?php echo css_url("styles.css");?>" rel="stylesheet">
+    <script>
+        function show_message(){
+            <?php
+                if($validate_message != null){
+                    echo "alert('".$validate_message."');";
+                }
+            ?>
+        }
+        show_message();
+    </script>
 </head>
 <body>
 <!--login modal-->

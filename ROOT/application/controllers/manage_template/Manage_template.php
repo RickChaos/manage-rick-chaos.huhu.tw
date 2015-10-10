@@ -17,14 +17,11 @@ class Manage_template extends CI_Controller
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
             $this->session->set_userdata('user_Unit', '');
-            $data['message'] = "閒置時間過久，請重新登入！";
-            $this->load->view('manage_template/test_template',$data);
-            redirect('default_controller');
+            redirect('login/index/1');
         }
     }
     public function __construct()
     {
-
         parent::__construct();//server的實體路徑
         $this->load->model('manage_template/Manage_Template_Model');
     }

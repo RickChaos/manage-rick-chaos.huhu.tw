@@ -15,9 +15,15 @@ class Login extends CI_Controller
         $this->load->helper('form');
     }
 
-    public function index()
+    public function index($message_type)
     {
-        $this->load->view('login/login_page');
+        if($message_type ==1){
+            $data['validate_message'] = "閒置時間過久，請重新登入！";
+            $this->load->view('login/login_page',$data);
+        }else{
+            $this->load->view('login/login_page');
+        }
+
     }
 
     public function check_user()
