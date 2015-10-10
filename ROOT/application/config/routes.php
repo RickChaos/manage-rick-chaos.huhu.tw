@@ -57,7 +57,7 @@ $route['testdb/hashpassword/(:any)'] = 'test_folder/testdb/hashpassword/$1';  //
 /*---- 登入  ----*/
 $route['default_controller'] = 'login/index'; //登入頁面
 $route['login/check'] = 'login/check_user';
-$route['login/fail'] = 'login/validate_fail';
+$route['login/fail/(:any)'] = 'login/validate_fail/$1';
 
 /* manage_template route */
 $route['manage_template/index'] = 'manage_template/manage_template/index';

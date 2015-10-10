@@ -20,9 +20,15 @@ class Login extends CI_Controller
         $data['validate_message'] = "";
         $this->load->view('login/login_page',$data);
     }
-    public function validate_fail()
+    public function validate_fail($type)
     {
-        $data['validate_message'] = "閒置時間過久，請重新登入！";
+        $data['validate_message'] = "";
+        if($type =="time_out"){
+            $data['validate_message'] = "閒置時間過久，請重新登入！";
+        }
+        if($type =="login_fail"){
+            $data['validate_message'] = "帳號密碼錯誤，請重新登入！";
+        }
         $this->load->view('login/login_page', $data);
     }
 
@@ -42,7 +48,7 @@ class Login extends CI_Controller
             $this->login_model->modify_login_info($userid, $this->session->user_id, $this->input->ip_address());
             redirect('manage_template/index');
         } else {
-            $this->load->view('login/login_page');
+            $this->validate_fail("login_fail");
         }
 
     }

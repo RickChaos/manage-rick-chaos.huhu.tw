@@ -17,7 +17,7 @@ class Manage_template extends CI_Controller
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
             $this->session->set_userdata('user_Unit', '');
-            redirect('login/fail');
+            redirect('login/fail/time_out');
         }
     }
     public function __construct()
