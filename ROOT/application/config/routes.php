@@ -55,9 +55,9 @@ $route['testdb/index'] = 'test_folder/testdb/index';  /*左方為Client路徑 : 
 $route['testdb/hashpassword/(:any)'] = 'test_folder/testdb/hashpassword/$1';  //測試hash password 函數
 
 /*---- 登入  ----*/
-$route['default_controller'] = 'login'; //登入頁面
+$route['default_controller'] = 'login/index'; //登入頁面
 $route['login/check'] = 'login/check_user';
-$route['login/index/(:num)'] = 'login/index/$1';
+$route['login/fail'] = 'login/validate_fail';
 
 /* manage_template route */
 $route['manage_template/index'] = 'manage_template/manage_template/index';

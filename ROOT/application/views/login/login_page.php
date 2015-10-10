@@ -11,7 +11,7 @@
     <script>
         function show_message(){
             <?php
-                if($validate_message != null){
+                if($validate_message!=""){
                     echo "alert('".$validate_message."');";
                 }
             ?>
