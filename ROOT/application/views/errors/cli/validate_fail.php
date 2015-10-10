@@ -1,3 +1,5 @@
-<javascript>
+<html>
+<script>
     alert('<?php echo $message?>');
-</javascript>
+</script>
+</html>
