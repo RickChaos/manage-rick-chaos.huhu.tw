@@ -18,7 +18,6 @@ class Login extends CI_Controller
     public function index()
     {
         $this->load->view('login/login_page');
-
     }
 
     public function check_user()
@@ -35,7 +34,7 @@ class Login extends CI_Controller
             $this->session->set_userdata('user_Unit', $user_info->Unit);
 
             $this->login_model->modify_login_info($userid, $this->session->user_id, $this->input->ip_address());
-            $this->load->view('manage_template/test_template');
+            redirect('manage_template/index');
         } else {
             $this->load->view('login/login_page');
         }

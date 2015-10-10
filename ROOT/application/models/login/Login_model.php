@@ -32,4 +32,10 @@ class Login_model extends CI_Model {
         $this->db->where('User_Id', $userid);
         $this->db->update('Manage_Empolyee', $data);
     }
+    public function validate_session($sessionid){
+        $sql = "select * from Manage_Empolyee where SessionId = ?";
+        $query = $this->db->query($sql, array($sessionid));
+
+        return $query->num_rows() > 0;
+    }
 }
