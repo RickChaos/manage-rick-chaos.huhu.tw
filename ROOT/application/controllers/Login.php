@@ -46,7 +46,7 @@ class Login extends CI_Controller
 
             $this->session->set_userdata('user_name', $user_info->User_Name);
             $this->session->set_userdata('user_id', $session_id);
-            $this->session->set_userdata('user_unit', $user_info->Unit);
+            $this->session->set_userdata('user_title', $user_info->User_Title);
 
             $this->login_model->modify_login_info($userid, $this->session->user_id, $this->input->ip_address());
             redirect('manage_template/index');

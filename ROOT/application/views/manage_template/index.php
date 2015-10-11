@@ -13,7 +13,7 @@
 	<!-- Custom CSS -->
 	<link href="<?php echo css_url("manage_template/sb-admin.css");?>" rel="stylesheet">
 	<!-- Custom Fonts -->
-	<link href="<?php echo css_url("manage_template/font-awesome/fonts/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo css_url("manage_template/font-awesome/css/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
 
     <!-- Morris Charts CSS -->
     <link href="<?php echo css_url("manage_template/plugins/morris.css");?>" rel="stylesheet">
@@ -78,14 +78,9 @@
 						<div class="panel-body">
 							<div class="list-group">
 								<a href="#" class="list-group-item">
-									<span class="badge">just now</span>
-									<i class="fa fa-fw fa-calendar"></i> Calendar updated
+									<span class="badge">2015-10-11</span>
+									<i class="fa fa-fw fa-calendar"></i> 登入、登出機制
 								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">4 minutes ago</span>
-									<i class="fa fa-fw fa-comment"></i> Commented on a post
-								</a>
-
 							</div>
 							<div class="text-right">
 								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
@@ -134,16 +129,8 @@
 						<div class="panel-body">
 							<div class="list-group">
 								<a href="#" class="list-group-item">
-									<span class="badge">just now</span>
-									<i class="fa fa-fw fa-calendar"></i> Calendar updated
-								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">4 minutes ago</span>
-									<i class="fa fa-fw fa-comment"></i> Commented on a post
-								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">23 minutes ago</span>
-									<i class="fa fa-fw fa-truck"></i> Order 392 shipped
+									<span class="badge">現正熱映中</span>
+									<i class="fa fa-fw fa-calendar"></i>  左方選單
 								</a>
 							</div>
 							<div class="text-right">

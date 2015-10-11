@@ -19,7 +19,7 @@
 
 
     <!-- Custom Fonts -->
-    <link href="<?php echo css_url("manage_template/font-awesome/fonts/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo css_url("manage_template/font-awesome/css/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +28,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-        function logout(url){
+        function link(url){
             parent.parent.window.location.href=url;
         }
     </script>
@@ -48,19 +48,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理系統</a>
+                <a class="navbar-brand" href="#" onclick="link('<?php echo base_url('manage_template/index')?>')">管理系統</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <?php echo $user_unit ?></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <?php echo $user_title ?></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_name ?> </a>
                 </li>
 				<li class="dropdown">
-                    <a href="#" onclick="logout('<?php echo base_url("login/logout")?>')">登出</a>
+                    <a href="#" onclick="link('<?php echo base_url("login/logout")?>')">登出</a>
                 </li>
             </ul>
             <!-- /.navbar-collapse -->

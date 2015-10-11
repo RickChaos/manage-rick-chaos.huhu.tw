@@ -16,7 +16,7 @@ class Manage_template extends CI_Controller
         else{
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
-            $this->session->set_userdata('user_unit', '');
+            $this->session->set_userdata('user_title', '');
             redirect('login/fail/time_out');
         }
     }
@@ -34,7 +34,7 @@ class Manage_template extends CI_Controller
     }
     public function top(){
         $data[user_name] = $this->session->user_name;
-        $data[user_unit] = $this->session->user_unit;
+        $data[user_title] = $this->session->user_title;
         $this->load->view('manage_template/template_top',$data);
     }
     public function default_content(){
