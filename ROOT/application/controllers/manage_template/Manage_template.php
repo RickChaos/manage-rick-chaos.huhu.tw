@@ -14,11 +14,11 @@ class Manage_template extends CI_Controller
             $this->$method();
         }
         else{
+            $data["fail_type"]="time_out";
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
             $this->session->set_userdata('user_title', '');
-            $this->load->view('login/login_fail');
-            //redirect('login/fail/time_out');
+            $this->load->view('login/login_fail',$data);
         }
     }
     public function __construct()
