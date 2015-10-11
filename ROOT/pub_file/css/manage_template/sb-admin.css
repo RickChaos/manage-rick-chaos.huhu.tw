@@ -150,7 +150,7 @@ ul.alert-dropdown {
     color: #999;
 }
 
-.side-nav>li>ul>li>a:hover {
+.side-nav a:hover {
     color: #fff;
 }
 
