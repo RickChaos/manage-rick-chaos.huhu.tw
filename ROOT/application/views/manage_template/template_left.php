@@ -37,24 +37,30 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-folder"></i> Rick開發專區 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-folder"></i> 系統開發專區 <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
-                            <li >
-                                <a href="#"><i class="fa fa-fw fa-cog"></i>選單維護</a>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-folder"></i> Rick專區 <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="demo1" class="collapse">
+                                    <li >
+                                        <a href="#"><i class="fa fa-fw fa-cog"></i>選單維護</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-folder"></i> Chaos專區 <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="demo2" class="collapse">
+                                    <li >
+                                        <a href="#"><i class="fa fa-fw fa-cog"></i>佈告欄分類</a>
+                                    </li>
+                                    <li >
+                                        <a href="#"><i class="fa fa-fw fa-cog"></i>佈告欄維護</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-folder"></i> Chaos專區 <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo2" class="collapse">
-                            <li >
-                                <a href="#"><i class="fa fa-fw fa-cog"></i>佈告欄分類</a>
-                            </li>
-                            <li >
-                                <a href="#"><i class="fa fa-fw fa-cog"></i>佈告欄維護</a>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             <!-- /.navbar-collapse -->
         </nav>
