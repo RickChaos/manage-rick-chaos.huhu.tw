@@ -13,7 +13,7 @@
 	<!-- Custom CSS -->
 	<link href="<?php echo css_url("manage_template/sb-admin.css");?>" rel="stylesheet">
 	<!-- Custom Fonts -->
-	<link href="<?php echo css_url("manage_template/font-awesome/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo css_url("manage_template/font-awesome/fonts/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
 
     <!-- Morris Charts CSS -->
     <link href="<?php echo css_url("manage_template/plugins/morris.css");?>" rel="stylesheet">

@@ -19,7 +19,7 @@
 
 
     <!-- Custom Fonts -->
-    <link href="<?php echo css_url("manage_template/font-awesome/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo css_url("manage_template/font-awesome/fonts/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +27,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script>
+        function logout(url){
+            parent.parent.window.location.href=url;
+        }
+    </script>
 </head>
 
 <body>
@@ -50,13 +54,13 @@
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> 最高管理者</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <?php echo $user_unit ?></a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 毅毅 </a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_name ?> </a>
                 </li>
 				<li class="dropdown">
-                    <a href="">登出</a>
+                    <a href="#" onclick="logout('<?php echo base_url("login/logout")?>')">登出</a>
                 </li>
             </ul>
             <!-- /.navbar-collapse -->

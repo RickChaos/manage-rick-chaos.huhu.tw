@@ -29,6 +29,9 @@ class Login extends CI_Controller
         if($type =="login_fail"){
             $data['validate_message'] = "帳號密碼錯誤，請重新登入！";
         }
+        if($type =="login_out"){
+            $data['validate_message'] = "登出完成！";
+        }
         $this->load->view('login/login_page', $data);
     }
 
@@ -43,7 +46,7 @@ class Login extends CI_Controller
 
             $this->session->set_userdata('user_name', $user_info->User_Name);
             $this->session->set_userdata('user_id', $session_id);
-            $this->session->set_userdata('user_Unit', $user_info->Unit);
+            $this->session->set_userdata('user_unit', $user_info->Unit);
 
             $this->login_model->modify_login_info($userid, $this->session->user_id, $this->input->ip_address());
             redirect('manage_template/index');
@@ -51,6 +54,13 @@ class Login extends CI_Controller
             $this->validate_fail("login_fail");
         }
 
+    }
+
+    public function logout(){
+        $this->session->set_userdata('user_name', '');
+        $this->session->set_userdata('user_id', '');
+        $this->session->set_userdata('user_unit', '');
+        redirect('login/fail/login_out');
     }
 
 }

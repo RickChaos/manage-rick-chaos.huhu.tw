@@ -16,7 +16,7 @@ class Manage_template extends CI_Controller
         else{
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
-            $this->session->set_userdata('user_Unit', '');
+            $this->session->set_userdata('user_unit', '');
             redirect('login/fail/time_out');
         }
     }
@@ -27,15 +27,17 @@ class Manage_template extends CI_Controller
     }
 
     public function index(){
-        $this->load->view('manage_template/test_template');
+        $this->load->view('manage_template/template_template');
     }
-    public function test_left(){
-        $this->load->view('manage_template/test_left');
+    public function left(){
+        $this->load->view('manage_template/template_left');
     }
-    public function test_top(){
-        $this->load->view('manage_template/test_top');
+    public function top(){
+        $data[user_name] = $this->session->user_name;
+        $data[user_unit] = $this->session->user_unit;
+        $this->load->view('manage_template/template_top',$data);
     }
-    public function test_index(){
+    public function default_content(){
         $data['Todolist']=$this->Manage_Template_Model->get_Todo_list();
         $this->load->view('manage_template/index',$data);
     }
