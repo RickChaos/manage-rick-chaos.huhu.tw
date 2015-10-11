@@ -65,6 +65,7 @@ $route['manage_template/index'] = 'manage_template/manage_template/index';
 $route['manage_template/template_left'] = 'manage_template/manage_template/left';
 $route['manage_template/template_top'] = 'manage_template/manage_template/top';
 $route['manage_template/default_content'] = 'manage_template/manage_template/default_content';
+$route['manage_template/notice_add'] = 'manage_template/manage_template/notice_add';
 
 
 $route['404_override'] = '';

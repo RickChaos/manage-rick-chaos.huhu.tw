@@ -38,6 +38,9 @@ class Manage_template extends CI_Controller
         $data[user_title] = $this->session->user_title;
         $this->load->view('manage_template/template_top',$data);
     }
+    public function notice_add(){
+        $this->load->view('manage_template/notice_add');
+    }
     public function default_content(){
         $data['Todolist']=$this->Manage_Template_Model->get_Todo_list();
         $this->load->view('manage_template/index',$data);
