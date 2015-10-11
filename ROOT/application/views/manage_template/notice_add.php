@@ -42,16 +42,21 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> 待辦事項-新增</h3>
                             </div>
+                        <?php
+                        $attributes = array('class' => 'form col-md-12 center-block', 'id' => 'notice_add_form');
+                        echo form_open('manage_template/notice_add', $attributes);
+                        ?>
                             <div class="panel-body">
                                 <div class="list-group">
                                     <div class="form-group">
                                         <label>標題</label>
-                                        <input class="form-control">
+                                        <input class="form-control" name="title">
                                     </div>
-                                    <button type="submit" class="btn btn-default">送出</button>
+                                    <button type="submit" class="btn btn-default" onclick="javascript:document.getElementById('notice_add_form').submit()">送出</button>
                                 </div>
                             </div>
                         </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
@@ -63,6 +68,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        <?php if(isset($check)){
+                ?>
+                alert('<?php echo $check ?>');
+        <?php } ?>
+    </script>
 
 </body>
 

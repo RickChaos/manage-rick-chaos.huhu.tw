@@ -56,10 +56,10 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<?php foreach($Todolist as $Todolist_Item):?>
+								<?php foreach($NoticeData as $Todolist_Item):?>
 								<a href="#" class="list-group-item">
 									<span class="badge"><?php echo substr($Todolist_Item['PostTime'],0,10) ?></span>
-									<i class="fa fa-fw fa-calendar"></i> <?php echo $Todolist_Item['Title'] ?>
+									<i class="fa fa-fw fa-calendar"></i> <?php echo $Todolist_Item['Subject'] ?>
 								</a>
 								<?php endforeach ?>
 							</div>

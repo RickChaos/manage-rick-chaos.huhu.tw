@@ -24,6 +24,7 @@ class Manage_template extends CI_Controller
     public function __construct()
     {
         parent::__construct();//server的實體路徑
+        $this->load->helper('form');
         $this->load->model('manage_template/Manage_Template_Model');
     }
 
@@ -39,10 +40,16 @@ class Manage_template extends CI_Controller
         $this->load->view('manage_template/template_top',$data);
     }
     public function notice_add(){
-        $this->load->view('manage_template/notice_add');
+        if($this->input->post('title',TRUE)){
+
+            $data['check']=$this->Manage_Template_Model->insert_NoticeData($this->input->post('title',TRUE));
+            $this->load->view('manage_template/notice_add',$data);
+        }else {
+            $this->load->view('manage_template/notice_add');
+        }
     }
     public function default_content(){
-        $data['Todolist']=$this->Manage_Template_Model->get_Todo_list();
+        $data['NoticeData']=$this->Manage_Template_Model->get_NoticeData();
         $this->load->view('manage_template/index',$data);
     }
 
