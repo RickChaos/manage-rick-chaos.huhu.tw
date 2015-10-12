@@ -66,7 +66,7 @@ $route['manage_template/template_left'] = 'manage_template/manage_template/left'
 $route['manage_template/template_top'] = 'manage_template/manage_template/top';
 $route['manage_template/default_content'] = 'manage_template/manage_template/default_content';
 $route['manage_template/notice_add'] = 'manage_template/manage_notice/notice_add';
-$route['manage_template/notice'] = 'manage_template/manage_notice/notice';
+$route['manage_template/notice'] = 'content/manage_notice/notice';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

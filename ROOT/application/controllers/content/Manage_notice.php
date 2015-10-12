@@ -26,7 +26,7 @@ class Manage_Notice extends CI_Controller
         parent::__construct();//server的實體路徑
         $this->load->helper('form');
         $this->load->helper('array');
-        $this->load->model('manage_template/Manage_Notice_Model');
+        $this->load->model('content/Manage_Notice_Model');
     }
     public function notice(){
         //刪除功能
