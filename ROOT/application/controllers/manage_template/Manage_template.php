@@ -40,7 +40,7 @@ class Manage_template extends CI_Controller
         $this->load->view('manage_template/template_top',$data);
     }
     public function notice_add(){
-        if($this->input->post('title',TRUE)){
+        if($this->input->post('title')){
 
             $data['check']=$this->Manage_Template_Model->insert_NoticeData($this->input->post('title',TRUE));
             $this->load->view('manage_template/notice_add',$data);

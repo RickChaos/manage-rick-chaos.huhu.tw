@@ -52,7 +52,7 @@
                                         <label>標題</label>
                                         <input class="form-control" name="title">
                                     </div>
-                                    <button type="submit" class="btn btn-default" onclick="javascript:document.getElementById('notice_add_form').submit()">送出</button>
+                                    <button type="submit" class="btn btn-default" onclick="javascript:checkSubject();">送出</button>
                                 </div>
                             </div>
                         </div>
@@ -63,16 +63,22 @@
 
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+   <!-- jQuery -->
+   <script src="<?php echo js_url("manage_template/jquery.js");?>"></script>
+   <!-- Bootstrap Core JavaScript -->
+   <script src="<?php echo js_url("manage_template/bootstrap.min.js");?>"></script>
     <script>
-        <?php if(isset($check)){
-                ?>
+        <?php if(isset($check)){ ?>
                 alert('<?php echo $check ?>');
         <?php } ?>
+         function checkSubject(){
+             if($('input[name="title"]').val()==''){
+                alert('不可輸入空白!');
+                return;
+             }  else {
+                 document.getElementById('notice_add_form').submit();
+             }
+         }
     </script>
 
 </body>
