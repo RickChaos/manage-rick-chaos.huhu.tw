@@ -54,7 +54,7 @@
                                         <a href="#"><i class="fa fa-fw fa-cog"></i>佈告欄分類</a>
                                     </li>
                                     <li >
-                                        <a href="javascript:change_content('<?php echo base_url('manage_template/notice') ?>')"><i class="fa fa-fw fa-cog"></i>佈告欄維護</a>
+                                        <a href="javascript:change_content('<?php echo base_url('content/notice') ?>')"><i class="fa fa-fw fa-cog"></i>佈告欄維護</a>
                                     </li>
                                 </ul>
                             </li>

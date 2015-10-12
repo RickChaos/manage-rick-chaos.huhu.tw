@@ -44,7 +44,7 @@
                             </div>
                         <?php
                         $attributes = array('class' => 'form col-md-12 center-block', 'id' => 'notice_add_form');
-                        echo form_open('manage_template/notice_add', $attributes);
+                        echo form_open('content/notice_add', $attributes);
                         ?>
                             <div class="panel-body">
                                 <div class="list-group">

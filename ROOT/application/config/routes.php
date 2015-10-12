@@ -65,8 +65,10 @@ $route['manage_template/index'] = 'manage_template/manage_template/index';
 $route['manage_template/template_left'] = 'manage_template/manage_template/left';
 $route['manage_template/template_top'] = 'manage_template/manage_template/top';
 $route['manage_template/default_content'] = 'manage_template/manage_template/default_content';
-$route['manage_template/notice_add'] = 'content/manage_notice/notice_add';
-$route['manage_template/notice'] = 'content/manage_notice/notice';
+
+/*---- 布告欄  ----*/
+$route['content/notice_add'] = 'content/manage_notice/notice_add';
+$route['content/notice'] = 'content/manage_notice/notice';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -28,9 +28,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-        function change_content(url){
-            document.location.href=url;
-        }
         <?php if(isset($rtndel)){ ?>
                     alert('<?php echo $rtndel ?>');
         <?php }?>
@@ -41,12 +38,12 @@
 
         <?php
         $attributes = array('class' => 'form col-md-12 center-block', 'id' => 'notice_form');
-        echo form_open('manage_template/notice', $attributes);
+        echo form_open('content/notice', $attributes);
         ?>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('manage_template/notice_add')?>'" >新增</button>
+                        <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('content/notice_add')?>'" >新增</button>
                         <button type="submit" class="btn btn-lg btn-danger" onclick="javascript:document.getElementById('notice_form').submit();;">刪除</button>
                     </div>
                 </div>
