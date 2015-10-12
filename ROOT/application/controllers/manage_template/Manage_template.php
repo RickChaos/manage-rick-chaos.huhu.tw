@@ -10,17 +10,17 @@ class Manage_template extends CI_Controller
     {
         $user_sessionid = $this->session->user_sessionid;
         $validate_result = $this->login_model->validate_session($user_sessionid);
-        if ($validate_result){
+        if ($validate_result) {
             $this->$method();
-        }
-        else{
-            $data["fail_type"]="time_out";
+        } else {
+            $data["fail_type"] = "time_out";
             $this->session->set_userdata('user_name', '');
             $this->session->set_userdata('user_id', '');
             $this->session->set_userdata('user_title', '');
-            $this->load->view('login/login_fail',$data);
+            $this->load->view('login/login_fail', $data);
         }
     }
+
     public function __construct()
     {
         parent::__construct();//server的實體路徑
@@ -29,20 +29,74 @@ class Manage_template extends CI_Controller
         $this->load->model('manage_template/Manage_Template_Model');
     }
 
-    public function index(){
+    public function index()
+    {
         $this->load->view('manage_template/template_template');
     }
-    public function left(){
-        $this->load->view('manage_template/template_left');
+
+    public function left()
+    {
+        $userid = $this->session->user_id;
+        $query_level_one = $this->Manage_Template_Model->get_menu(1, 0);
+        $menu = " <ul class=\"nav navbar-nav side-nav\">";
+        for ($i = 0; $i < count($query_level_one); $i++) {
+            $level_one_name = $query_level_one[$i]['Name'];
+            $level_one_id = $query_level_one[$i]['Id'];
+            $menu = $menu . "<li>";
+            $menu = $menu . "<a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo" . $i . "\"><i class=\"fa fa-fw fa-folder\"></i> " . $level_one_name;
+            if ($this->Manage_Template_Model->has_node($level_one_id)) {
+                $menu = $menu .  " <i class=\"fa fa-fw fa-caret-down\"></i></a>" ;
+                $menu = $menu . "<ul id=\"demo" . $i . "\" class=\"collapse\">";
+                $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
+                for ($j = 0; $j < count($query_level_two); $j++) {
+                    $level_two_name = $query_level_two[$j]['Name'];
+                    $level_two_id = $query_level_two[$j]['Id'];
+                    $level_two_type = $query_level_two[$j]['Type'];
+                    $level_two_promgram_url = $query_level_two[$j]['Promgram_Url'];
+                    $menu = $menu . "<li>";
+                    if ($level_two_type == "folder") {
+                        $menu = $menu . "<a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo" . $i . "_" . $j . "\"> <i class=\"fa fa-fw fa-folder\"></i> ". $level_two_name ;
+                        if ($this->Manage_Template_Model->has_node($level_two_id)) {
+                            $menu = $menu ." <i class=\"fa fa-fw fa-caret-down\"></i></a>";
+                            $menu = $menu . "<ul id=\"demo" . $i . "_" . $j . "\" class=\"collapse\">";
+                            $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
+                            for ($k = 0; $k < count($query_level_three); $k++) {
+                                $level_three_name = $query_level_three[$k]['Name'];
+                                $level_three_promgram_url = $query_level_three[$k]['Promgram_Url'];
+                                $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_three_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_three_name . "</a>";
+                            }
+                            $menu = $menu . "</ul>";
+                        }else{
+                            $menu = $menu ."</a>" ;
+                        }
+                    } else {
+                        $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_two_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_two_name . "</a>";
+                    }
+
+                    $menu = $menu . "</li>";
+                }
+                $menu = $menu . "</ul>";
+            }else{
+                $menu = $menu .   "</a>";
+            }
+            $menu = $menu . "</li>";
+        }
+        $menu = $menu . " </ul>";
+        $data["menu"] = $menu;
+        $this->load->view('manage_template/template_left', $data);
     }
-    public function top(){
+
+    public function top()
+    {
         $data[user_name] = $this->session->user_name;
         $data[user_title] = $this->session->user_title;
-        $this->load->view('manage_template/template_top',$data);
+        $this->load->view('manage_template/template_top', $data);
     }
-    public function default_content(){
-        $data['NoticeData']=$this->Manage_Template_Model->get_NoticeData();
-        $this->load->view('manage_template/index',$data);
+
+    public function default_content()
+    {
+        $data['NoticeData'] = $this->Manage_Template_Model->get_NoticeData();
+        $this->load->view('manage_template/index', $data);
     }
 
 }

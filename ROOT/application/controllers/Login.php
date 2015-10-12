@@ -39,10 +39,9 @@ class Login extends CI_Controller
     {
         $userid = $this->input->post('user');
         $password = $this->input->post('password');
-        $query_user_password = $this->login_model->get_user_password($userid);
+        $user_info = $this->login_model->get_user_info($userid);
 
-        if (password_verify($password, $query_user_password->User_Password)) {
-            $user_info = $this->login_model->get_user_info($userid);
+        if (password_verify($password, $user_info->User_Password)) {
             $session_id = password_hash($user_info->User_Id, PASSWORD_DEFAULT);
 
             $this->session->set_userdata('user_name', $user_info->User_Name);
