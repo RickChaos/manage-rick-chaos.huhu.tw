@@ -25,6 +25,7 @@ class Manage_template extends CI_Controller
     {
         parent::__construct();//server的實體路徑
         $this->load->helper('form');
+        $this->load->helper('array');
         $this->load->model('manage_template/Manage_Template_Model');
     }
 
@@ -40,12 +41,20 @@ class Manage_template extends CI_Controller
         $this->load->view('manage_template/template_top',$data);
     }
     public function notice(){
+        //刪除功能
+        if($this->input->post('noticeSelect')){
+            $deleteSelect=$this->input->post('noticeSelect',true);
+            for($i = 0 ; $i<count($deleteSelect) ;$i++) {
+                $rtndel = $this->Manage_Template_Model->delete_NoticeData($deleteSelect[$i]);
+                if($rtndel=='刪除失敗')break;
+            }
+            $data['rtndel']=$rtndel;
+        }
         $data['NoticeData']=$this->Manage_Template_Model->get_NoticeData();
         $this->load->view('manage_template/notice',$data);
     }
     public function notice_add(){
         if($this->input->post('title')){
-
             $data['check']=$this->Manage_Template_Model->insert_NoticeData($this->input->post('title',TRUE));
             $this->load->view('manage_template/notice_add',$data);
         }else {
