@@ -8,7 +8,7 @@ class Manage_template extends CI_Controller
 {
     public function _remap($method)
     {
-        $user_sessionid = $this->session->user_id;
+        $user_sessionid = $this->session->user_sessionid;
         $validate_result = $this->login_model->validate_session($user_sessionid);
         if ($validate_result){
             $this->$method();

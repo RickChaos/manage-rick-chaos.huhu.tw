@@ -13,12 +13,12 @@ class Login_model extends CI_Model {
         $this->load->database();
         $this->load->helper('date');
     }
-    public function check_user($userid,$password)
+    public function get_user_password($userid)
     {
-		$sql = "select * from Manage_Empolyee where User_Id = ? and User_Password = ?";
-		$query = $this->db->query($sql, array($userid, $password));
+		$sql = "select * from Manage_Empolyee where User_Id = ? ";
+		$query = $this->db->query($sql, array($userid));
 		
-		return $query->num_rows() > 0;
+		return $query->row();
     }
     public function get_user_info($userid){
         $sql = "select * from Manage_Empolyee where User_Id = ?";
