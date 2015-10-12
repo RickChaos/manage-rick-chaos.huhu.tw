@@ -12,19 +12,19 @@ class Testdb extends CI_Controller
     {
         parent::__construct();
         $this->load->model('login/login_model'); //server的實體路徑
-        $this->load->helper('phpass');
+        //$this->load->helper('phpass');
     }
 
     public function index()
     {
         $data['test'] = $this->testmodel->get_all();
         $this->load->view('test_folder/index', $data);
-        $this->load->library('PasswordHash');
+        
     }
 
     public function hashpassword($password){
-        $hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
-        $data['password']  = $hasher->HashPassword($password);
+        //$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
+        $data['password']  = password_hash($password, PASSWORD_DEFAULT);
         $this->load->view('test_folder/password_hash', $data);
     }
 
