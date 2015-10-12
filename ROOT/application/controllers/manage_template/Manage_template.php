@@ -39,6 +39,10 @@ class Manage_template extends CI_Controller
         $data[user_title] = $this->session->user_title;
         $this->load->view('manage_template/template_top',$data);
     }
+    public function notice(){
+        $data['NoticeData']=$this->Manage_Template_Model->get_NoticeData();
+        $this->load->view('manage_template/notice',$data);
+    }
     public function notice_add(){
         if($this->input->post('title')){
 
