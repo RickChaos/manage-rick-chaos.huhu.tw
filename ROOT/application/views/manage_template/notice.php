@@ -29,11 +29,11 @@
     <![endif]-->
     <script>
         <?php if(isset($rtndel)){ ?>
-                    alert('<?php echo $rtndel ?>');
+                    alert('<?php echo $rtndel!='1'?'刪除失敗!':'刪除成功!' ?>');
         <?php }?>
         function mdy(mdyid){
             document.notice_form.mdyId.value=mdyid;
-            document.notice_form.action="<?php echo base_url('manage_template/notice_mdy') ?>";
+            document.notice_form.action="<?php echo base_url('content/notice_mdy') ?>";
             document.notice_form.method="post";
             document.notice_form.submit();
         }

@@ -67,8 +67,9 @@ $route['manage_template/template_top'] = 'manage_template/manage_template/top';
 $route['manage_template/default_content'] = 'manage_template/manage_template/default_content';
 
 /*---- 布告欄  ----*/
-$route['content/notice_add'] = 'content/manage_notice/notice_add';
 $route['content/notice'] = 'content/manage_notice/notice';
+$route['content/notice_add'] = 'content/manage_notice/notice_add';
+$route['content/notice_mdy'] = 'content/manage_notice/notice_mdy';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

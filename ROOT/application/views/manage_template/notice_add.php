@@ -28,6 +28,19 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+        <?php if(isset($check)){ ?>
+        alert('<?php echo $check!='1'?'寫入失敗!':'寫入成功' ?>');
+        <?php } ?>
+        function checkSubject(){
+            if($('input[name="title"]').val()==''){
+                alert('不可輸入空白!');
+                return;
+            }  else {
+                document.getElementById('notice_add_form').submit();
+            }
+        }
+    </script>
 </head>
 
 <body style="background-color:white">
@@ -67,19 +80,7 @@
    <script src="<?php echo js_url("manage_template/jquery.js");?>"></script>
    <!-- Bootstrap Core JavaScript -->
    <script src="<?php echo js_url("manage_template/bootstrap.min.js");?>"></script>
-    <script>
-        <?php if(isset($check)){ ?>
-                alert('<?php echo $check ?>');
-        <?php } ?>
-         function checkSubject(){
-             if($('input[name="title"]').val()==''){
-                alert('不可輸入空白!');
-                return;
-             }  else {
-                 document.getElementById('notice_add_form').submit();
-             }
-         }
-    </script>
+
 
 </body>
 

@@ -34,7 +34,7 @@ class Manage_Notice extends CI_Controller
             $deleteSelect=$this->input->post('noticeSelect',true);
             for($i = 0 ; $i<count($deleteSelect) ;$i++) {
                 $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
-                if($rtndel=='刪除失敗')break;
+                if($rtndel!='1') {$rtndel='error'; break;}
             }
             $data['rtndel']=$rtndel;
         }
@@ -48,6 +48,11 @@ class Manage_Notice extends CI_Controller
         }else {
             $this->load->view('manage_template/notice_add');
         }
+    }
+    public function notice_mdy(){
+            $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
+            $this->load->view('manage_template/notice_mdy',$data);
+
     }
 
 }
