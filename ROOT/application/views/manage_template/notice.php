@@ -31,15 +31,22 @@
         <?php if(isset($rtndel)){ ?>
                     alert('<?php echo $rtndel ?>');
         <?php }?>
+        function mdy(mdyid){
+            document.notice_form.mdyId.value=mdyid;
+            document.notice_form.action="<?php echo base_url('manage_template/notice_mdy') ?>";
+            document.notice_form.method="post";
+            document.notice_form.submit();
+        }
     </script>
 </head>
 
 <body style="background-color:white">
 
         <?php
-        $attributes = array('class' => 'form col-md-12 center-block', 'id' => 'notice_form');
+        $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'notice_form');
         echo form_open('content/notice', $attributes);
         ?>
+            <input type="hidden" name="mdyId" />
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -68,7 +75,7 @@
                                 <td><input type="checkbox" name="noticeSelect[]" value="<?php echo $NoticeData[$i]['Id'] ?>"> </td>
                                 <td><?php echo $i+1 ?></td>
                                 <td><?php echo $NoticeData[$i]['Class_Id']==''?'-':$NoticeData[$i]['Class_Id'] ?></td>
-                                <td><?php echo $NoticeData[$i]['Subject'] ?></td>
+                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
                                 <td><?php echo substr($NoticeData[$i]['PostTime'],0,10) ?></td>
                                 <td><?php echo $NoticeData[$i]['FinishTime']==''?'-':$NoticeData[$i]['FinishTime'] ?></td>
                                 <td><?php echo $NoticeData[$i]['Complete']=='N'?'未完成':'完成' ?></td>
