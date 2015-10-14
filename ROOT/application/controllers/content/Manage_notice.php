@@ -36,7 +36,7 @@ class Manage_Notice extends CI_Controller
                 $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
                 if($rtndel!='1') {$rtndel='error'; break;}
             }
-            $data['rtndel']=$rtndel;
+            $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
         }
         $data['NoticeData']=$this->Manage_Notice_Model->get_NoticeData();
         $this->load->view('manage_template/notice',$data);
@@ -50,8 +50,19 @@ class Manage_Notice extends CI_Controller
         }
     }
     public function notice_mdy(){
-            $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
-            $this->load->view('manage_template/notice_mdy',$data);
+        $data['NoticeClass'] = $this->Manage_Notice_Model->get_NoticeClass();
+        $MdyId = $this->input->post('MdyId', true);
+        $data['MdyId']=$MdyId;
+        $data['MdyClassId']= $this->input->post('MdyClassId', true);
+        $data['MdySubject'] = $this->input->post('MdySubject', true);
+        if($this->input->post('Subject')) {
+            $Class_Id=$this->input->post('Class_Id');
+            $Subject=$this->input->post('Subject');
+            $rtnmdy=$this->Manage_Notice_Model->update_NoticeData($MdyId,$Class_Id,$Subject)!='1'?'更新失敗!':'更新成功';
+            $data['MdyClassId'] =$Class_Id;
+            $data['MdySubject'] = $Subject;
+        }
+            $this->load->view('manage_template/notice_mdy', $data);
 
     }
 
