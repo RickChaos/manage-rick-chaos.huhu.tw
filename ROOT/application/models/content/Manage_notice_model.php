@@ -18,8 +18,10 @@ class Manage_notice_model extends CI_Model {
         return $query->result_array();
     }
     public function get_NoticeData()
-    {
-        $query = $this->db->get('Manage_NoticeData');
+    {  $this->db->select('d.Id,c.Class_Id,d.Subject,c.Subject as User,d.PostTime,d.FinishTime,d.Complete');
+        $this->db->from('Manage_NoticeData as d');
+        $this->db->join('Manage_NoticeClass as c', 'd.Class_Id = c.Class_Id');
+        $query = $this->db->get();
         return $query->result_array();
     }
     public function delete_NoticeData($getSelect){
@@ -28,12 +30,16 @@ class Manage_notice_model extends CI_Model {
     }
     public function insert_NoticeData($subject)
     {   $datetime = date ("Y-m-d H:i:s");
-        $sqlData = array('Id' => NULL, 'Subject' => $subject, 'PostTime' => $datetime,'Complete' => 'N');
+        $sqlData = array('Ids' => NULL,'Class_Id'=> '1', 'Subject' => $subject, 'PostTime' => $datetime,'Complete' => 'N');
         $sql=$this->db->insert_string('Manage_NoticeData',$sqlData);
 
         return $this->db->simple_query($sql);
+    }
+    public function update_NoticeData($id,$class_Id,$subject)
+    {   $data = array('Class_Id'=>$class_Id,'Subject' => $subject);
+        $this->db->where('Id', $id);
 
-
+        return $this->db->update('Manage_NoticeData', $data);
 
     }
 }
