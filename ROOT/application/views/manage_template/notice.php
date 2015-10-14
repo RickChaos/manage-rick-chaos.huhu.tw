@@ -29,10 +29,12 @@
     <![endif]-->
     <script>
         <?php if(isset($rtndel)){ ?>
-                    alert('<?php echo $rtndel!='1'?'刪除失敗!':'刪除成功!' ?>');
+                    alert('<?php echo $rtndel ?>');
         <?php }?>
-        function mdy(mdyid){
-            document.notice_form.mdyId.value=mdyid;
+        function mdy(mdyid,mdyClassid,mdySubject){
+            document.notice_form.MdyId.value=mdyid;
+            document.notice_form.MdyClassId.value=mdyClassid;
+            document.notice_form.MdySubject.value=mdySubject;
             document.notice_form.action="<?php echo base_url('content/notice_mdy') ?>";
             document.notice_form.method="post";
             document.notice_form.submit();
@@ -46,12 +48,14 @@
         $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'notice_form');
         echo form_open('content/notice', $attributes);
         ?>
-            <input type="hidden" name="mdyId" />
+            <input type="hidden" name="MdyId" />
+            <input type="hidden" name="MdyClassId" />
+            <input type="hidden" name="MdySubject" />
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('content/notice_add')?>'" >新增</button>
-                        <button type="submit" class="btn btn-lg btn-danger" onclick="javascript:document.getElementById('notice_form').submit();;">刪除</button>
+                        <button type="submit" class="btn btn-lg btn-danger" onclick="javascript:document.notice_form.submit();">刪除</button>
                     </div>
                 </div>
                 <div class="row">
@@ -74,8 +78,8 @@
                             <tr>
                                 <td><input type="checkbox" name="noticeSelect[]" value="<?php echo $NoticeData[$i]['Id'] ?>"> </td>
                                 <td><?php echo $i+1 ?></td>
-                                <td><?php echo $NoticeData[$i]['Class_Id']==''?'-':$NoticeData[$i]['Class_Id'] ?></td>
-                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
+                                <td><?php echo $NoticeData[$i]['User'] ?></td>
+                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>','<?php echo $NoticeData[$i]['Class_Id'] ?>','<?php echo $NoticeData[$i]['Subject'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
                                 <td><?php echo substr($NoticeData[$i]['PostTime'],0,10) ?></td>
                                 <td><?php echo $NoticeData[$i]['FinishTime']==''?'-':$NoticeData[$i]['FinishTime'] ?></td>
                                 <td><?php echo $NoticeData[$i]['Complete']=='N'?'未完成':'完成' ?></td>
