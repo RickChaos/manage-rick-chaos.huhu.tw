@@ -26,6 +26,7 @@ class Manage_template extends CI_Controller
         parent::__construct();//server的實體路徑
         $this->load->helper('form');
         $this->load->helper('array');
+        $this->load->helper('security');
         $this->load->model('manage_template/Manage_Template_Model');
     }
 
@@ -40,44 +41,50 @@ class Manage_template extends CI_Controller
         $query_level_one = $this->Manage_Template_Model->get_menu(1, 0);
         $menu = " <ul class=\"nav navbar-nav side-nav\">";
         for ($i = 0; $i < count($query_level_one); $i++) {
-            $level_one_name = $query_level_one[$i]['Name'];
-            $level_one_id = $query_level_one[$i]['Id'];
+            $level_one_name = xss_clean($query_level_one[$i]['Name']);
+            $level_one_id = xss_clean($query_level_one[$i]['Id']);
+            $level_one_type=xss_clean($query_level_one[$i]['Type']);
+            $level_one_promgram_url=xss_clean($query_level_one[$i]['Promgram_Url']);
             $menu = $menu . "<li>";
             $menu = $menu . "<a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo" . $i . "\"><i class=\"fa fa-fw fa-folder\"></i> " . $level_one_name;
-            if ($this->Manage_Template_Model->has_node($level_one_id)) {
-                $menu = $menu .  " <i class=\"fa fa-fw fa-caret-down\"></i></a>" ;
-                $menu = $menu . "<ul id=\"demo" . $i . "\" class=\"collapse\">";
-                $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
-                for ($j = 0; $j < count($query_level_two); $j++) {
-                    $level_two_name = $query_level_two[$j]['Name'];
-                    $level_two_id = $query_level_two[$j]['Id'];
-                    $level_two_type = $query_level_two[$j]['Type'];
-                    $level_two_promgram_url = $query_level_two[$j]['Promgram_Url'];
-                    $menu = $menu . "<li>";
-                    if ($level_two_type == "folder") {
-                        $menu = $menu . "<a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo" . $i . "_" . $j . "\"> <i class=\"fa fa-fw fa-folder\"></i> ". $level_two_name ;
-                        if ($this->Manage_Template_Model->has_node($level_two_id)) {
-                            $menu = $menu ." <i class=\"fa fa-fw fa-caret-down\"></i></a>";
-                            $menu = $menu . "<ul id=\"demo" . $i . "_" . $j . "\" class=\"collapse\">";
-                            $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
-                            for ($k = 0; $k < count($query_level_three); $k++) {
-                                $level_three_name = $query_level_three[$k]['Name'];
-                                $level_three_promgram_url = $query_level_three[$k]['Promgram_Url'];
-                                $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_three_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_three_name . "</a>";
+            if ($level_one_type == "folder") {
+                if ($this->Manage_Template_Model->has_node($level_one_id)) {
+                    $menu = $menu .  " <i class=\"fa fa-fw fa-caret-down\"></i></a>" ;
+                    $menu = $menu . "<ul id=\"demo" . $i . "\" class=\"collapse\">";
+                    $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
+                    for ($j = 0; $j < count($query_level_two); $j++) {
+                        $level_two_name = xss_clean($query_level_two[$j]['Name']);
+                        $level_two_id = xss_clean($query_level_two[$j]['Id']);
+                        $level_two_type = xss_clean($query_level_two[$j]['Type']);
+                        $level_two_promgram_url = xss_clean($query_level_two[$j]['Promgram_Url']);
+                        $menu = $menu . "<li>";
+                        if ($level_two_type == "folder") {
+                            $menu = $menu . "<a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo" . $i . "_" . $j . "\"> <i class=\"fa fa-fw fa-folder\"></i> ". $level_two_name ;
+                            if ($this->Manage_Template_Model->has_node($level_two_id)) {
+                                $menu = $menu ." <i class=\"fa fa-fw fa-caret-down\"></i></a>";
+                                $menu = $menu . "<ul id=\"demo" . $i . "_" . $j . "\" class=\"collapse\">";
+                                $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
+                                for ($k = 0; $k < count($query_level_three); $k++) {
+                                    $level_three_name = xss_clean($query_level_three[$k]['Name']);
+                                    $level_three_promgram_url = xss_clean($query_level_three[$k]['Promgram_Url']);
+                                    $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_three_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_three_name . "</a>";
+                                }
+                                $menu = $menu . "</ul>";
+                            }else{
+                                $menu = $menu ."</a>" ;
                             }
-                            $menu = $menu . "</ul>";
-                        }else{
-                            $menu = $menu ."</a>" ;
+                        } else {
+                            $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_two_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_two_name . "</a>";
                         }
-                    } else {
-                        $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_two_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_two_name . "</a>";
-                    }
 
-                    $menu = $menu . "</li>";
+                        $menu = $menu . "</li>";
+                    }
+                    $menu = $menu . "</ul>";
+                }else{
+                    $menu = $menu .   "</a>";
                 }
-                $menu = $menu . "</ul>";
             }else{
-                $menu = $menu .   "</a>";
+                $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_one_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_one_name . "</a>";
             }
             $menu = $menu . "</li>";
         }

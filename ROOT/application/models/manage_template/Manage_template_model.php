@@ -35,7 +35,7 @@ class Manage_template_model extends CI_Model
 
     public function get_menu($node_level, $parent)
     {
-        $sql = "select * from Manage_Ap_Tree where Node_Level = ? and Parent = ?";
+        $sql = "select * from Manage_Ap_Tree where Node_Level = ? and Parent = ? order by Sequence";
         $query = $this->db->query($sql, array($node_level, $parent));
         return $query->result_array();
     }
