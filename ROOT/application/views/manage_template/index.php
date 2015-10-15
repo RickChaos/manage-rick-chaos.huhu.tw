@@ -118,7 +118,7 @@
 							<div class="list-group">
 								<?php foreach($Rick as $Rick_Item): ?>
 								<a href="#" class="list-group-item">
-									<span class="badge"><?php echo substr($Rick_Item['PostTime']) ?></span>
+									<span class="badge"><?php echo substr($Rick_Item['PostTime'],0,10) ?></span>
 									<i class="fa fa-fw fa-calendar"></i>  <?php echo $Rick_Item['Subject'] ?>
 								</a>
 								<?php endforeach ?>

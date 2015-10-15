@@ -58,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                    <h2>待辦事項維護</h2>
+                    <h2>佈告欄類別維護</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>

@@ -50,7 +50,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> 待辦事項-新增</h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> 佈告欄類別-新增</h3>
                             </div>
                         <?php
                         $attributes = array('class' => 'form col-md-12 center-block','name' => 'notice_add_form', 'id' => 'notice_add_form');
