@@ -35,10 +35,10 @@ class Manage_notice_model extends CI_Model {
 
         return $this->db->simple_query($sql);
     }
-    public function update_NoticeData($id,$class_Id,$subject)
-    {   $data = array('Class_Id'=>$class_Id,'Subject' => $subject);
+    public function update_NoticeData($id,$class_Id,$subject,$complete)
+    {   $datetime = date ("Y-m-d H:i:s");
+        $data = array('Class_Id'=>$class_Id,'Subject' => $subject,'Complete' => $complete ,'FinishTime'=> $complete=='Y'?$datetime:NULL);
         $this->db->where('Id', $id);
-
         return $this->db->update('Manage_NoticeData', $data);
 
     }

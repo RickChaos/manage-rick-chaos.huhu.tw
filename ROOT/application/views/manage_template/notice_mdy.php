@@ -76,6 +76,15 @@
                                         <input type="text" name="Subject" value="<?php echo $MdySubject ?>" />
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        標題:
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="Complete" value="Y" <?php echo $MdyComplete=='Y'?'checked':''?> />完成
+                                        <input type="radio" name="Complete" value="N" <?php echo $MdyComplete=='N'?'checked':''?> />未完成
+                                    </td>
+                                </tr>
 
                             </tr>
                             </tbody>

@@ -31,10 +31,11 @@
         <?php if(isset($rtndel)){ ?>
                     alert('<?php echo $rtndel ?>');
         <?php }?>
-        function mdy(mdyid,mdyClassid,mdySubject){
+        function mdy(mdyid,mdyClassid,mdySubject,mdyComplete){
             document.notice_form.MdyId.value=mdyid;
             document.notice_form.MdyClassId.value=mdyClassid;
             document.notice_form.MdySubject.value=mdySubject;
+            document.notice_form.MdyComplete.value=mdyComplete;
             document.notice_form.action="<?php echo base_url('content/notice_mdy') ?>";
             document.notice_form.method="post";
             document.notice_form.submit();
@@ -51,6 +52,7 @@
             <input type="hidden" name="MdyId" />
             <input type="hidden" name="MdyClassId" />
             <input type="hidden" name="MdySubject" />
+            <input type="hidden" name="MdyComplete" />
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -79,9 +81,9 @@
                                 <td><input type="checkbox" name="noticeSelect[]" value="<?php echo $NoticeData[$i]['Id'] ?>"> </td>
                                 <td><?php echo $i+1 ?></td>
                                 <td><?php echo $NoticeData[$i]['User'] ?></td>
-                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>','<?php echo $NoticeData[$i]['Class_Id'] ?>','<?php echo $NoticeData[$i]['Subject'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
+                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>','<?php echo $NoticeData[$i]['Class_Id'] ?>','<?php echo $NoticeData[$i]['Subject'] ?>','<?php echo $NoticeData[$i]['Complete'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
                                 <td><?php echo substr($NoticeData[$i]['PostTime'],0,10) ?></td>
-                                <td><?php echo $NoticeData[$i]['FinishTime']==''?'-':$NoticeData[$i]['FinishTime'] ?></td>
+                                <td><?php echo $NoticeData[$i]['FinishTime']==''?'-':substr($NoticeData[$i]['FinishTime'],0,10) ?></td>
                                 <td><?php echo $NoticeData[$i]['Complete']=='N'?'未完成':'完成' ?></td>
 
                             </tr>
