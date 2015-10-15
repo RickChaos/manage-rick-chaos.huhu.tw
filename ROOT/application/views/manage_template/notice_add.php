@@ -29,8 +29,8 @@
     <![endif]-->
 
     <script>
-        <?php if(isset($check)){ ?>
-        alert('<?php echo $check!='1'?'寫入失敗!':'寫入成功' ?>');
+        <?php if(isset($rtnadd)){ ?>
+        alert('<?php echo $rtnadd ?>');
         <?php } ?>
         function checkSubject(){
             if($('input[name="title"]').val()==''){
@@ -65,7 +65,7 @@
                                         <label>標題</label>
                                         <input class="form-control" name="title">
                                     </div>
-                                    <button type="submit" class="btn btn-default" onclick="javascript:checkSubject();">送出</button>
+                                    <button type="button" class="btn btn-default" onclick="javascript:checkSubject();">送出</button>
                                 </div>
                             </div>
                         </div>

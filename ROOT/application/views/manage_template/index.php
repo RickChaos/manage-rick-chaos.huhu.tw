@@ -56,15 +56,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<?php foreach($NoticeData as $Todolist_Item):?>
+								<?php foreach($Todolist as $Todolist_Item):?>
 								<a href="#" class="list-group-item">
 									<span class="badge"><?php echo substr($Todolist_Item['PostTime'],0,10) ?></span>
 									<i class="fa fa-fw fa-calendar"></i> <?php echo $Todolist_Item['Subject'] ?>
 								</a>
 								<?php endforeach ?>
-							</div>
-							<div class="text-right">
-								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -77,13 +74,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<a href="#" class="list-group-item">
-									<span class="badge">2015-10-11</span>
-									<i class="fa fa-fw fa-calendar"></i> 登入、登出機制
-								</a>
-							</div>
-							<div class="text-right">
-								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+								<?php foreach($Completion as $Completion_Item):?>
+									<a href="#" class="list-group-item">
+										<span class="badge"><?php echo substr($Completion_Item['FinishTime'],0,10) ?></span>
+										<i class="fa fa-fw fa-calendar"></i> <?php echo $Completion_Item['Subject'] ?>
+									</a>
+								<?php endforeach ?>
 							</div>
 						</div>
 					</div>
@@ -101,22 +97,14 @@
 					</div>
 					<div class="panel-body">
 						<div class="list-group">
+								<?php foreach($Chaos as $Chas_Item): ?>
 								<a href="#" class="list-group-item">
-									<span class="badge">just now</span>
-									<i class="fa fa-fw fa-calendar"></i> Calendar updated
+									<span class="badge"><?php echo substr($Chas_Item['PostTime'],0,10) ?></span>
+									<i class="fa fa-fw fa-calendar"></i> <?php echo $Chas_Item['Subject'] ?>
 								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">4 minutes ago</span>
-									<i class="fa fa-fw fa-comment"></i> Commented on a post
-								</a>
-								<a href="#" class="list-group-item">
-									<span class="badge">23 minutes ago</span>
-									<i class="fa fa-fw fa-truck"></i> Order 392 shipped
-								</a>
+							     <?php endforeach ?>
 							</div>
-							<div class="text-right">
-								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -128,13 +116,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
+								<?php foreach($Rick as $Rick_Item): ?>
 								<a href="#" class="list-group-item">
-									<span class="badge">現正熱映中</span>
-									<i class="fa fa-fw fa-calendar"></i>  左方選單
+									<span class="badge"><?php echo substr($Rick_Item['PostTime']) ?></span>
+									<i class="fa fa-fw fa-calendar"></i>  <?php echo $Rick_Item['Subject'] ?>
 								</a>
-							</div>
-							<div class="text-right">
-								<a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+								<?php endforeach ?>
 							</div>
 						</div>
 					</div>

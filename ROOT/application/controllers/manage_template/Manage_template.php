@@ -95,7 +95,10 @@ class Manage_template extends CI_Controller
 
     public function default_content()
     {
-        $data['NoticeData'] = $this->Manage_Template_Model->get_NoticeData();
+        $data['Todolist'] = $this->Manage_Template_Model->get_todo_list();
+        $data['Completion'] = $this->Manage_Template_Model->get_completion();
+        $data['Rick']=$this->Manage_Template_Model->get_personal('4');
+        $data['Chaos']=$this->Manage_Template_Model->get_personal('3');
         $this->load->view('manage_template/index', $data);
     }
 

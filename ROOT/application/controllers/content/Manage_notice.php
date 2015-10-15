@@ -34,7 +34,7 @@ class Manage_Notice extends CI_Controller
             $deleteSelect=$this->input->post('noticeSelect',true);
             for($i = 0 ; $i<count($deleteSelect) ;$i++) {
                 $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
-                if($rtndel!='1') {$rtndel='error'; break;}
+                if($rtndel!='1')  break;
             }
             $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
         }
@@ -43,7 +43,7 @@ class Manage_Notice extends CI_Controller
     }
     public function notice_add(){
         if($this->input->post('title')){
-            $data['check']=$this->Manage_Notice_Model->insert_NoticeData($this->input->post('title',TRUE));
+            $data['rtnadd']=$this->Manage_Notice_Model->insert_NoticeData($this->input->post('title',TRUE))!='1'?'寫入失敗!':'寫入成功!';
             $this->load->view('manage_template/notice_add',$data);
         }else {
             $this->load->view('manage_template/notice_add');
@@ -66,6 +66,43 @@ class Manage_Notice extends CI_Controller
             $data['rtnmdy']=$this->Manage_Notice_Model->update_NoticeData($MdyId,$Class_Id,$Subject,$Complete)!='1'?'更新失敗!':'更新成功';
         }
         $this->load->view('manage_template/notice_mdy', $data);
+
+    }
+
+
+
+    public function notice_class(){
+        //刪除功能
+        if($this->input->post('classSelect')){
+            $deleteSelect=$this->input->post('classSelect',true);
+            for($i = 0 ; $i<count($deleteSelect) ;$i++) {
+                $data['rtndel'] = $this->Manage_Notice_Model->delete_NoticeClass($deleteSelect[$i]);
+                if($data['rtndel']!='1') break;
+            }
+            $data['rtndel']=$data['rtndel']!='1'?'刪除失敗!':'刪除成功';
+        }
+        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
+        $this->load->view('manage_template/notice_class',$data);
+    }
+    public function notice_class_add(){
+        if($this->input->post('Subject')){
+            $data['rtnadd']=$this->Manage_Notice_Model->insert_NoticeClass($this->input->post('Subject',TRUE))!='1'?'寫入失敗!':'寫入成功!';
+            $this->load->view('manage_template/notice_class_add',$data);
+        }else {
+            $this->load->view('manage_template/notice_class_add');
+        }
+    }
+    public function notice_class_mdy(){
+        $data['MdyClassId']=$this->input->post('MdyClassId',true);
+        $data['MdySubject']=$this->input->post('MdySubject',true);
+        if($this->input->post('Class_Id')){
+            $Class_Id=$this->input->post('Class_Id',true);
+            $Subject=$this->input->post('Subject',true);
+            $data['MdyClassId']= $Class_Id;
+            $data['MdySubject']= $Subject;
+            $data['rtnmdy'] = $this->Manage_Notice_Model->update_NoticeClass($Class_Id,$Subject);
+        }
+        $this->load->view('manage_template/notice_class_mdy', $data);
 
     }
 

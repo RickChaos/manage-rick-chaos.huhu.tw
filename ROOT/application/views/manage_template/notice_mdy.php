@@ -50,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-4">
-                    <h2>待辦事項維護</h2>
+                    <h2>佈告欄維護</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
 
