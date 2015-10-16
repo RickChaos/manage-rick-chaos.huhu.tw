@@ -33,19 +33,9 @@
             <span><i class="icon-th"></i> 選單維護 </span>
             <ul>
                 <li>
-                    <span class="badge badge-success"><i class="icon-folder-close"></i>1111111</span>
+                    <span class="badge badge-success" onclick="load_folder()"><i class="icon-folder-close"></i>1111111</span>  <a href="#">+</a>
                     <ul>
-                        <li>
-                            <a href=""><span><i class="icon-cog"></i> 8.00</span></a>
-                        </li>
-                        <li>
-                            <span class="badge badge-success"><i class="icon-folder-close"></i> Monday, January 7: 8.00 hours</span></span>
-                            <ul>
-                                <li>
-                                    <a href=""><span><i class="icon-cog"></i> 8.00</span> &ndash; test</a>
-                                </li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -53,161 +43,33 @@
     </ul>
 </div>
 <!-- /#wrapper -->
+
 <div style="width:60%;float:left;margin-left:30px ">
     <div class='panel panel-primary dialog-panel' style="-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
         <div class='panel-heading'>
-            <h5> 選單目錄 </h5>
+            <h5> 目錄維護 </h5>
         </div>
         <div class='panel-body'>
             <form class='form-horizontal' role='form'>
                 <div class='form-group'>
-                    <label class='control-label col-xs-6 .col-md-4 col-md-offset-2' for='id_accomodation'>選單目錄</label>
+                    <label class='control-label col-xs-6 .col-md-6 col-md-offset-2' for='folder_name'>名 稱</label>
                     <div class='col-md-5'>
-                        <select class='form-control' id='id_accomodation'>
-                            <option>RV</option>
-                            <option>Tent</option>
-                            <option>Cabin/Lodging</option>
-                        </select>
+                        <input class='form-control' id='folder_name' placeholder='資料夾名稱' type='text'>
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
-                    <div class='col-md-8'>
-                        <div class='col-md-2'>
-                            <div class='form-group internal'>
-                                <select class='form-control' id='id_title'>
-                                    <option>Mr</option>
-                                    <option>Ms</option>
-                                    <option>Mrs</option>
-                                    <option>Miss</option>
-                                    <option>Dr</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
-                            </div>
-                        </div>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
-                            </div>
-                        </div>
+                    <label class='control-label col-xs-6 .col-md-6 col-md-offset-2' for='folder_sequence'>排 序</label>
+                    <div class='col-md-5'>
+                        <input class='form-control' id='folder_sequence' type='text' onkeyup="value=value.replace(/[^-_0-9]/g,'')">
                     </div>
                 </div>
+
                 <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_adults'>Guests</label>
-                    <div class='col-md-8'>
-                        <div class='col-md-2'>
-                            <div class='form-group internal'>
-                                <input class='form-control col-md-8' id='id_adults' placeholder='18+ years' type='number'>
-                            </div>
-                        </div>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_children' placeholder='2-17 years' type='number'>
-                            </div>
-                        </div>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_children_free' placeholder='&lt; 2 years' type='number'>
-                            </div>
-                        </div>
+                    <div class='control-label col-xs-6 .col-md-6 col-md-offset-3'>
+                        <button class='btn-lg btn-primary' >送出</button>
                     </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Contact</label>
-                    <div class='col-md-6'>
-                        <div class='form-group'>
-                            <div class='col-md-11'>
-                                <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
-                            </div>
-                        </div>
-                        <div class='form-group internal'>
-                            <div class='col-md-11'>
-                                <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Checkin</label>
-                    <div class='col-md-8'>
-                        <div class='col-md-3'>
-                            <div class='form-group internal input-group'>
-                                <input class='form-control datepicker' id='id_checkin'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                            </div>
-                        </div>
-                        <label class='control-label col-md-2' for='id_checkout'>Checkout</label>
-                        <div class='col-md-3'>
-                            <div class='form-group internal input-group'>
-                                <input class='form-control datepicker' id='id_checkout'>
-                  <span class='input-group-addon'>
-                    <i class='glyphicon glyphicon-calendar'></i>
-                  </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Equipment type</label>
-                    <div class='col-md-8'>
-                        <div class='col-md-3'>
-                            <div class='form-group internal'>
-                                <select class='form-control' id='id_equipment'>
-                                    <option>Travel trailer</option>
-                                    <option>Fifth wheel</option>
-                                    <option>RV/Motorhome</option>
-                                    <option>Tent trailer</option>
-                                    <option>Pickup camper</option>
-                                    <option>Camper van</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md-9'>
-                            <div class='form-group internal'>
-                                <label class='control-label col-md-3' for='id_slide'>Slide-outs</label>
-                                <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_slide_switch'>
-                                    <input id='id_slide' type='checkbox' value='chk_hydro'>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Required Service</label>
-                    <div class='col-md-8'>
-                        <select class='multiselect' id='id_service' multiple='multiple'>
-                            <option value='hydro'>Hydro</option>
-                            <option value='water'>Water</option>
-                            <option value='sewer'>Sewer</option>
-                        </select>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_pets'>Pets</label>
-                    <div class='col-md-8'>
-                        <div class='make-switch' data-off-label='NO' data-on-label='YES' id='id_pets_switch'>
-                            <input id='id_pets' type='checkbox' value='chk_hydro'>
-                        </div>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
-                    <div class='col-md-6'>
-                        <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <div class='col-md-offset-4 col-md-3'>
-                        <button class='btn-lg btn-primary' type='submit'>Request Reservation</button>
-                    </div>
-                    <div class='col-md-3'>
-                        <button class='btn-lg btn-danger' style='float:right' type='submit'>Cancel</button>
+                    <div class='control-label col-xs-6 .col-md-6 col-md-offset-2'>
+                        <button class='btn-lg btn-danger' style='float:right' >取消</button>
                     </div>
                 </div>
             </form>

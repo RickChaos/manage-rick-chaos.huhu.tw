@@ -8,12 +8,12 @@
  */
 class Maintain_menu extends CI_Controller
 {
-    public function _remap($method)
+    public function _remap($method,$params)
     {
         $user_sessionid = $this->session->user_sessionid;
         $validate_result = $this->login_model->validate_session($user_sessionid);
         if ($validate_result){
-            $this->$method();
+            $this->$method($params);
         }
         else{
             $data["fail_type"]="time_out";
@@ -42,7 +42,7 @@ class Maintain_menu extends CI_Controller
             $level_one_type = xss_clean($query_level_one[$i]['Type']);
             $menu = $menu . "<li>";
             if($level_one_type == "folder"){
-                $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_one_id."')\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
+                $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_one_id."','modify')\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
                 $menu = $menu . "<ul>";
                 if ($this->Manage_Template_Model->has_node($level_one_id)) {
                     $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
@@ -52,7 +52,7 @@ class Maintain_menu extends CI_Controller
                         $level_two_type = xss_clean($query_level_two[$j]['Type']);
                         $menu = $menu . "<li>";
                         if ($level_two_type == "folder") {
-                            $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_two_id."')\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
+                            $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_two_id."','modify')\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
                             $menu = $menu . "<ul>";
                             if ($this->Manage_Template_Model->has_node($level_two_id)) {
                                 $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
@@ -60,25 +60,41 @@ class Maintain_menu extends CI_Controller
                                     $menu = $menu . "<li>";
                                     $level_three_name = xss_clean($query_level_three[$k]['Name']);
                                     $level_three_id = xss_clean($query_level_three[$k]['Id']);
-                                    $menu = $menu . "<a href=\"javascript:load_function('".$level_three_id."')\" ><span><i class=\"icon-cog\"></i> ".$level_three_name."</span></a>";
+                                    $menu = $menu . "<a href=\"javascript:load_function('".$level_three_id."','modify')\" ><span><i class=\"icon-cog\"></i> ".$level_three_name."</span></a>";
                                     $menu = $menu . "</li>";
                                 }
                             }
                             $menu = $menu . "</ul>";
                         }else{
-                            $menu = $menu . "<a href=\"javascript:load_function('".$level_two_id."')\" ><span><i class=\"icon-cog\"></i> ".$level_two_name."</span></a>";
+                            $menu = $menu . "<a href=\"javascript:load_function('".$level_two_id."','modify')\" ><span><i class=\"icon-cog\"></i> ".$level_two_name."</span></a>";
                         }
                         $menu = $menu . "</li>";
                     }
                 }
                 $menu = $menu . "</ul>";
             }else{
-                $menu = $menu . "<a href=\"javascript:load_function('".$level_one_id."')\" ><span><i class=\"icon-cog\"></i> ".$level_one_name."</span></a>";
+                $menu = $menu . "<a href=\"javascript:load_function('".$level_one_id."','modify')\" ><span><i class=\"icon-cog\"></i> ".$level_one_name."</span></a>";
             }
             $menu = $menu . "</li>";
         }
         $menu = $menu . " </ul>";
         $data["menu"] = $menu;
         $this->load->view('maintain_menu/maintain_menu',$data);
+    }
+
+    function load_function($id){
+        $this->output->set_content_type('application/json');
+        $query = $this->Maintain_menu_model->get_node_info($id);
+        $data["Name"] = $query->Name;
+        $data["Url"] = $query->Promgram_Url;
+        $data["Sequence"] = $query->Sequence;
+        echo json_encode($data);
+    }
+    function load_folder($id){
+        $this->output->set_content_type('application/json');
+        $query = $this->Maintain_menu_model->get_node_info($id);
+        $data["Name"] = $query->Name;
+        $data["Sequence"] = $query->Sequence;
+        echo json_encode($data);
     }
 }

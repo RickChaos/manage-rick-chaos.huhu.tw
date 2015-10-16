@@ -4,11 +4,11 @@ $(function () {
         var children = $(this).parent('li.parent_li').find(' > ul > li');
         if (children.is(":visible")) {
             children.hide('fast');
-            $(this).parent('li.parent_li').find('span').attr('title', 'Expand this branch').find(' > i').addClass('icon-folder-close').removeClass('icon-folder-open');
+            $(this).parent().children('span').attr('title', 'Expand this branch').children(' i').addClass('icon-folder-close').removeClass('icon-folder-open');
             $(this).find('i').addClass('icon-plus').removeClass('icon-minus');
         } else {
             children.show('fast');
-            $(this).parent('li.parent_li').find('span').attr('title', 'Collapse this branch').find(' > i').addClass('icon-folder-open').removeClass('icon-folder-close');
+            $(this).parent().children('span').attr('title', 'Collapse this branch').children('i').addClass('icon-folder-open').removeClass('icon-folder-close');
             $(this).find('i').addClass('icon-minus').removeClass('icon-plus');
         }
         e.stopPropagation();
