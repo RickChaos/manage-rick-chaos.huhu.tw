@@ -6,12 +6,14 @@ function root_folder(){
     $('#function_block').css( "display", "none" );
     $('#folder_block').css( "display", "none" );
     $('#folder_block').css( "display", "block" );
+    $('#folder_button_block').css( "display", "none" );
     $('#folder_id').val('0');
     $('#folder_name').attr("readonly",true);
     $('#folder_sequence').attr("readonly",true);
     $('#folder_title').html("選單維護");
     $('#folder_name').val("選單維護");
     $('#folder_sequence').val("");
+
 }
 
 function load_folder(id,method) {
@@ -22,6 +24,7 @@ function load_folder(id,method) {
     $('#function_block').css( "display", "none" );
     $('#folder_block').css( "display", "none" );
     $('#folder_block').css( "display", "block" );
+    $('#folder_button_block').css( "display", "block" );
     $.ajax({
         type: "post",
         url: 'http://manage-rick-chaos.huhu.tw/maintain_menu/load_folder/'+id,

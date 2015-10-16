@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class='form-group'>
+                <div class='form-group' id="folder_button_block">
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-3'>
                         <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclikc="folder_save()">
                     </div>
