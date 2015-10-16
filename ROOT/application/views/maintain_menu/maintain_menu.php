@@ -111,7 +111,7 @@
                         <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclikc="function_save()">
                     </div>
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-2'>
-                        <input type="button" class='btn-lg btn-danger' style='float:right' onclick="document.folder_form.reset()" value="取消">
+                        <input type="button" class='btn-lg btn-danger' style='float:right' onclick="document.function_form.reset()" value="取消">
                     </div>
                 </div>
             </form>
