@@ -78,6 +78,7 @@ $route['content/notice_class_mdy'] = 'content/manage_notice/notice_class_mdy';
 $route['maintain_menu/default'] = 'content/maintain_menu/index';
 $route['maintain_menu/load_function/(:num)'] = 'content/maintain_menu/load_function/$1';
 $route['maintain_menu/load_folder/(:num)'] = 'content/maintain_menu/load_folder/$1';
+$route['maintain_menu/modify_folder'] = 'content/maintain_menu/modify_folder';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
