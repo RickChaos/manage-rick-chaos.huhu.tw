@@ -82,7 +82,7 @@ class Maintain_menu extends CI_Controller
         $this->load->view('maintain_menu/maintain_menu',$data);
     }
 
-    function load_function($id){
+    public function load_function($id){
         $this->output->set_content_type('application/json');
         $query = $this->Maintain_menu_model->get_node_info($id);
         $data["Name"] = $query->Name;
@@ -90,11 +90,41 @@ class Maintain_menu extends CI_Controller
         $data["Sequence"] = $query->Sequence;
         echo json_encode($data);
     }
-    function load_folder($id){
+    public function load_folder($id){
         $this->output->set_content_type('application/json');
         $query = $this->Maintain_menu_model->get_node_info($id);
         $data["Name"] = $query->Name;
+        $data["Node_Level"] = $query->Node_Level;
         $data["Sequence"] = $query->Sequence;
+        echo json_encode($data);
+    }
+
+    public function modify_folder(){
+        $id=$this->input->post('folder_id');
+        $name=$this->input->post('folder_name');
+        $sequence=$this->input->post('folder_sequence');
+        $data["result"] = "";
+        if($this->Maintain_menu_model->update_folder_node($id,$name,$sequence)){
+            $data["result"] = "success";
+        }else{
+            $data["result"] = "fail";
+        }
+        $this->output->set_content_type('application/json');
+        echo json_encode($data);
+    }
+
+    public function modify_function(){
+        $id=$this->input->post('function_id');
+        $name=$this->input->post('function_name');
+        $url=$this->input->post('function_url');
+        $sequence=$this->input->post('function_sequence');
+        $data["result"] = "";
+        if($this->Maintain_menu_model->update_function_node($id,$name,$url,$sequence)){
+            $data["result"] = "success";
+        }else{
+            $data["result"] = "fail";
+        }
+        $this->output->set_content_type('application/json');
         echo json_encode($data);
     }
 }

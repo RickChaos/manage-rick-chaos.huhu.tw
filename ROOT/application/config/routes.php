@@ -79,6 +79,9 @@ $route['maintain_menu/default'] = 'content/maintain_menu/index';
 $route['maintain_menu/load_function/(:num)'] = 'content/maintain_menu/load_function/$1';
 $route['maintain_menu/load_folder/(:num)'] = 'content/maintain_menu/load_folder/$1';
 $route['maintain_menu/modify_folder'] = 'content/maintain_menu/modify_folder';
+$route['maintain_menu/modify_function'] = 'content/maintain_menu/modify_function';
+$route['maintain_menu/add_folder'] = 'content/maintain_menu/add_folder';
+$route['maintain_menu/add_function'] = 'content/maintain_menu/add_function';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

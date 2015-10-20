@@ -45,7 +45,19 @@
         <div class='panel-body'>
             <form class='form-horizontal' role='form' id="folder_form" name="folder_form">
                 <input type="hidden" id="folder_id" name="folder_id" >
+                <input type="hidden" id="folder_parent_id" name="folder_parent_id" >
                 <input type="hidden" id="folder_method" name="folder_method" >
+                <div class='form-group' id="folder_top_button">
+                    <div style="float:left;padding-top: 5px;margin-left:20px" id="add_folder_button">
+                        <input type="button" class='btn-sm btn-warning' style='float:right' onclick="add_new_folder()" value="新增資料夾" >
+                    </div>
+                    <div style="float:left;padding-top: 5px;margin-left:20px">
+                        <input type="button" class='btn-sm btn-warning' style='float:right' onclick="add_new_function()" value="新增功能">
+                    </div>
+                    <div style="float:left;padding-top: 5px;margin-left:20px" id="del_folder_button">
+                        <input type="button" class='btn-sm btn-danger' style='float:right' onclick="delete_folder_node()" value="刪除該資料夾">
+                    </div>
+                </div>
                 <div class='form-group'>
                     <label class='control-label col-xs-6 .col-md-6 col-md-offset-2' for='folder_name'>名 稱</label>
 
@@ -61,9 +73,9 @@
                     </div>
                 </div>
 
-                <div class='form-group' id="folder_button_block">
+                <div class='form-group' id="folder_bottom_button">
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-3'>
-                        <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclikc="folder_save()">
+                        <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclick="folder_save()">
                     </div>
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-2'>
                         <input type="button" class='btn-lg btn-danger' style='float:right'
@@ -84,7 +96,13 @@
         <div class='panel-body'>
             <form class='form-horizontal' role='form' id="folder_form" name="function_form">
                 <input type="hidden" id="function_id" name="function_id" >
+                <input type="hidden" id="function_parent_id" name="function_parent_id" >
                 <input type="hidden" id="function_method" name="function_method" >
+                <div class='form-group' id="function_top_button">
+                    <div style="float:left;padding-top: 5px;margin-left:20px" id="del_folder_button">
+                        <input type="button" class='btn-sm btn-danger' style='float:right' onclick="delete_function_node()" value="刪除該功能">
+                    </div>
+                </div>
                 <div class='form-group'>
                     <label class='control-label col-xs-6 .col-md-6 col-md-offset-2' for='function_name'>名 稱</label>
                     <div class='col-md-5'>
@@ -108,7 +126,7 @@
 
                 <div class='form-group'>
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-3'>
-                        <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclikc="function_save()">
+                        <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存" onclick="function_save()">
                     </div>
                     <div class='control-label col-xs-6 .col-md-6 col-md-offset-2'>
                         <input type="button" class='btn-lg btn-danger' style='float:right' onclick="document.function_form.reset()" value="取消">
