@@ -127,4 +127,78 @@ class Maintain_menu extends CI_Controller
         $this->output->set_content_type('application/json');
         echo json_encode($data);
     }
+
+    public function add_folder(){
+        $parent_id=$this->input->post('folder_parent_id');
+        $name=$this->input->post('folder_name');
+        $sequence=$this->input->post('folder_sequence');
+        $level = "1";
+        if($parent_id != "0"){
+            $parent_query = $this->Maintain_menu_model->get_node_info($parent_id);
+            $level = ($parent_query->Node_Level)+1;
+        }
+        $createname=$this->session->user_name;
+
+        $data["result"] = "";
+        if($this->Maintain_menu_model->add_folder_node($parent_id,$name,$sequence,$level,$createname)){
+            $data["result"] = "success";
+        }else{
+            $data["result"] = "fail";
+        }
+        $this->output->set_content_type('application/json');
+        echo json_encode($data);
+    }
+
+    public function add_function(){
+        $parent_id=$this->input->post('function_parent_id');
+        $name=$this->input->post('function_name');
+        $url=$this->input->post('function_url');
+        $sequence=$this->input->post('function_sequence');
+        $level = "1";
+        if($parent_id != "0"){
+            $parent_query = $this->Maintain_menu_model->get_node_info($parent_id);
+            $level = ($parent_query->Node_Level)+1;
+        }
+        $createname=$this->session->user_name;
+
+        $data["result"] = "";
+        if($this->Maintain_menu_model->add_function_node($parent_id,$name,$url,$sequence,$level,$createname)){
+            $data["result"] = "success";
+        }else{
+            $data["result"] = "fail";
+        }
+        $this->output->set_content_type('application/json');
+        echo json_encode($data);
+    }
+
+    public function del_folder(){
+        $id=$this->input->post('folder_id');
+
+        $data["result"] = "";
+        $data["message"] = "";
+
+        if($this->Manage_Template_Model->has_node($id)){
+            $data["result"] = "fail";
+            $data["message"] = "該資料夾下尚有節點，請先刪除子節點";
+        }else{
+            if($this->Maintain_menu_model->del_node($id)){
+                $data["result"] = "success";
+            }else{
+                $data["result"] = "fail";
+            }
+        }
+        $this->output->set_content_type('application/json');
+        echo json_encode($data);
+    }
+    public function del_function(){
+        $id=$this->input->post('function_id');
+        $data["result"] = "";
+        if($this->Maintain_menu_model->del_node($id)){
+            $data["result"] = "success";
+        }else{
+            $data["result"] = "fail";
+        }
+        $this->output->set_content_type('application/json');
+        echo json_encode($data);
+    }
 }

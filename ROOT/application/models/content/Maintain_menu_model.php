@@ -27,5 +27,17 @@ class Maintain_menu_model extends CI_Model
         $this->db->where('Id', $id);
         return $this->db->update('Manage_Ap_Tree', $data);
     }
+    public function add_folder_node($parent_id,$name,$sequence,$level,$createname){
+        $data = array('Parent' => $parent_id,'Node_Level'=>$level,'Type'=>'folder','Name'=>$name,'CreateName'=>$createname,'Sequence'=>$sequence);
+        return $this->db->insert('Manage_Ap_Tree', $data);
+    }
+    public function add_function_node($parent_id,$name,$url,$sequence,$level,$createname){
+        $data = array('Parent' => $parent_id,'Node_Level'=>$level,'Promgram_Url'=>$url,'Type'=>'function','Name'=>$name,'CreateName'=>$createname,'Sequence'=>$sequence);
+        return $this->db->insert('Manage_Ap_Tree', $data);
+    }
+
+    public function del_node($id){
+        return $this->db->delete('Manage_Ap_Tree', array('Id' => $id));
+    }
 
 }
