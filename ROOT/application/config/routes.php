@@ -85,5 +85,8 @@ $route['maintain_menu/add_function'] = 'content/maintain_menu/add_function';
 $route['maintain_menu/del_folder'] = 'content/maintain_menu/del_folder';
 $route['maintain_menu/del_function'] = 'content/maintain_menu/del_function';
 
+/*---- 會員中心  ----*/
+$route['member_center/default'] = 'content/member_center/index';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
