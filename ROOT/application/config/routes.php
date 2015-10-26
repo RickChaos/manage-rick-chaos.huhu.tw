@@ -89,7 +89,7 @@ $route['maintain_menu/del_function'] = 'content/maintain_menu/del_function';
 $route['member_center/default'] = 'content/member_center/index';
 
 /*---- 選單權限設定  ----*/
-$route['authority_menu/index'] = 'authority_menu/index';
+$route['authority_menu/index'] = 'content/authority_menu/index';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
