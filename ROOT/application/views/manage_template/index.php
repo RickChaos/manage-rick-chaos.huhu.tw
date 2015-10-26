@@ -89,43 +89,25 @@
 
 			<!-- 人員專區-->
 			<div class="row">
-				 <!--Chaos-->
-				<div class="col-lg-6 col-md-6">
-					<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Chaos</h3>
-					</div>
-					<div class="panel-body">
-						<div class="list-group">
-								<?php foreach($Chaos as $Chas_Item): ?>
-								<a href="#" class="list-group-item">
-									<span class="badge"><?php echo substr($Chas_Item['PostTime'],0,10) ?></span>
-									<i class="fa fa-fw fa-calendar"></i> <?php echo $Chas_Item['Subject'] ?>
-								</a>
-							     <?php endforeach ?>
-							</div>
 
-						</div>
-					</div>
-				</div>
-				<!--Rick-->
+				<!--Test-->
+				<?php for($i=0 ; $i< count($PersonalData) ;$i++){?>
 				<div class="col-lg-6 col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Rick</h3>
+							<h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i><?php echo $PersonalData[$i]['Name']?></h3>
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-								<?php foreach($Rick as $Rick_Item): ?>
-								<a href="#" class="list-group-item">
-									<span class="badge"><?php echo substr($Rick_Item['PostTime'],0,10) ?></span>
-									<i class="fa fa-fw fa-calendar"></i>  <?php echo $Rick_Item['Subject'] ?>
-								</a>
-								<?php endforeach ?>
+									<a href="#" class="list-group-item">
+										<span class="badge"><?php echo substr($PersonalData[$i]['PostTime'],0,10) ?></span>
+										<i class="fa fa-fw fa-calendar"></i>  <?php echo $PersonalData[$i]['Subject'] ?>
+									</a>
 							</div>
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 
