@@ -39,14 +39,15 @@ class Manage_Notice extends CI_Controller
             $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
         }
         $data['NoticeData']=$this->Manage_Notice_Model->get_NoticeData();
-        $this->load->view('manage_template/notice',$data);
+
+        $this->load->view('notice/notice',$data);
     }
     public function notice_add(){
         if($this->input->post('title')){
             $data['rtnadd']=$this->Manage_Notice_Model->insert_NoticeData($this->input->post('title',TRUE))!='1'?'寫入失敗!':'寫入成功!';
-            $this->load->view('manage_template/notice_add',$data);
+            $this->load->view('notice/notice_add',$data);
         }else {
-            $this->load->view('manage_template/notice_add');
+            $this->load->view('notice/notice_add');
         }
     }
     public function notice_mdy(){
@@ -65,7 +66,7 @@ class Manage_Notice extends CI_Controller
             $data['MdyComplete'] =$Complete;
             $data['rtnmdy']=$this->Manage_Notice_Model->update_NoticeData($MdyId,$Class_Id,$Subject,$Complete)!='1'?'更新失敗!':'更新成功';
         }
-        $this->load->view('manage_template/notice_mdy', $data);
+        $this->load->view('notice/notice_mdy', $data);
 
     }
 
@@ -82,14 +83,14 @@ class Manage_Notice extends CI_Controller
             $data['rtndel']=$data['rtndel']!='1'?'刪除失敗!':'刪除成功';
         }
         $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
-        $this->load->view('manage_template/notice_class',$data);
+        $this->load->view('notice/notice_class',$data);
     }
     public function notice_class_add(){
         if($this->input->post('Subject')){
             $data['rtnadd']=$this->Manage_Notice_Model->insert_NoticeClass($this->input->post('Subject',TRUE))!='1'?'寫入失敗!':'寫入成功!';
-            $this->load->view('manage_template/notice_class_add',$data);
+            $this->load->view('notice/notice_class_add',$data);
         }else {
-            $this->load->view('manage_template/notice_class_add');
+            $this->load->view('notice/notice_class_add');
         }
     }
     public function notice_class_mdy(){
@@ -102,7 +103,7 @@ class Manage_Notice extends CI_Controller
             $data['MdySubject']= $Subject;
             $data['rtnmdy'] = $this->Manage_Notice_Model->update_NoticeClass($Class_Id,$Subject);
         }
-        $this->load->view('manage_template/notice_class_mdy', $data);
+        $this->load->view('notice/notice_class_mdy', $data);
 
     }
 
