@@ -18,126 +18,46 @@
 
 <body>
 
-<div class="tree" style="-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);float:left">
+<div style="width:100%;padding:50px">
     <div class="row">
-        <div class="col-lg-6">
-            <h2>Bordered Table</h2>
+        <div class="col-lg-8 col-md-8"">
+            <h2>選單權限設定</h2>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>Page</th>
-                        <th>Visits</th>
-                        <th>% New Visits</th>
-                        <th>Revenue</th>
+                        <th class="col-md-1">項次</th>
+                        <th class="col-md-2">單位</th>
+                        <th class="col-md-3">職稱</th>
+                        <th class="col-md-6">名稱</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>/index.html</td>
-                        <td>1265</td>
-                        <td>32.3%</td>
-                        <td>$321.33</td>
+                        <td>1</td>
+                        <td>不告訴你</td>
+                        <td>不告訴你</td>
+                        <td>毅毅</td>
+                    </tr>
+                    <tr style="background-color: #BBBABA">
+                        <td>2</td>
+                        <td>不告訴你</td>
+                        <td>不告訴你</td>
+                        <td>小超</td>
                     </tr>
                     <tr>
-                        <td>/about.html</td>
-                        <td>261</td>
-                        <td>33.3%</td>
-                        <td>$234.12</td>
+                        <td>3</td>
+                        <td>不告訴你</td>
+                        <td>不告訴你</td>
+                        <td>泰豐</td>
                     </tr>
-                    <tr>
-                        <td>/sales.html</td>
-                        <td>665</td>
-                        <td>21.3%</td>
-                        <td>$16.34</td>
-                    </tr>
-                    <tr>
-                        <td>/blog.html</td>
-                        <td>9516</td>
-                        <td>89.3%</td>
-                        <td>$1644.43</td>
-                    </tr>
-                    <tr>
-                        <td>/404.html</td>
-                        <td>23</td>
-                        <td>34.3%</td>
-                        <td>$23.52</td>
-                    </tr>
-                    <tr>
-                        <td>/services.html</td>
-                        <td>421</td>
-                        <td>60.3%</td>
-                        <td>$724.32</td>
-                    </tr>
-                    <tr>
-                        <td>/blog/post.html</td>
-                        <td>1233</td>
-                        <td>93.2%</td>
-                        <td>$126.34</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-lg-6">
-            <h2>Bordered with Striped Rows</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th>Page</th>
-                        <th>Visits</th>
-                        <th>% New Visits</th>
-                        <th>Revenue</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>/index.html</td>
-                        <td>1265</td>
-                        <td>32.3%</td>
-                        <td>$321.33</td>
-                    </tr>
-                    <tr>
-                        <td>/about.html</td>
-                        <td>261</td>
-                        <td>33.3%</td>
-                        <td>$234.12</td>
-                    </tr>
-                    <tr>
-                        <td>/sales.html</td>
-                        <td>665</td>
-                        <td>21.3%</td>
-                        <td>$16.34</td>
-                    </tr>
-                    <tr>
-                        <td>/blog.html</td>
-                        <td>9516</td>
-                        <td>89.3%</td>
-                        <td>$1644.43</td>
-                    </tr>
-                    <tr>
-                        <td>/404.html</td>
-                        <td>23</td>
-                        <td>34.3%</td>
-                        <td>$23.52</td>
-                    </tr>
-                    <tr>
-                        <td>/services.html</td>
-                        <td>421</td>
-                        <td>60.3%</td>
-                        <td>$724.32</td>
-                    </tr>
-                    <tr>
-                        <td>/blog/post.html</td>
-                        <td>1233</td>
-                        <td>93.2%</td>
-                        <td>$126.34</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
     </div>
 </div>
 </body>
