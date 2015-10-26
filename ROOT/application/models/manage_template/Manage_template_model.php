@@ -26,10 +26,20 @@ class Manage_template_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_personal($class_id)
-    {   $sql = "select * from Manage_NoticeData where Class_id = ? and Complete = ?";
-        $query = $this->db->query($sql, array($class_id,'N'));
+    public function get_personalData()
+    {   $sql = "select mc.Subject as Name,md.* from Manage_NoticeData md,Manage_NoticeClass mc where md.Class_Id=mc.Class_Id and md.Complete = ? and mc.Subject != '-' order by md.Class_Id desc ";
 
+        $this->db->select('mc.Subject as Name,md.*');
+        $this->db->from('Manage_NoticeData as md');
+        $this->db->join('Manage_NoticeClass as mc','md.Class_Id=mc.Class_Id');
+        $this->db->where('mc.Subject !=', '-');
+        $this->db->where('md.Complete', 'N');
+        $this->db->order_by('Class_Id', 'DESC');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function get_personal(){
+        $query = $this->db->get('Manage_NoticeClass');
         return $query->result_array();
     }
 
