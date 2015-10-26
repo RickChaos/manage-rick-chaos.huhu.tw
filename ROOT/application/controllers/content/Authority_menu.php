@@ -32,6 +32,6 @@ class Authority_menu extends CI_Controller
     public function index()
     {
         $data['validate_message'] = "";
-        $this->load->view('login/login_page', $data);
+        $this->load->view('authority_menu/authority_menu_list', $data);
     }
 }
