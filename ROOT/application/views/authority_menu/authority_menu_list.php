@@ -20,6 +20,16 @@
 
 <div style="width:100%;padding:50px">
     <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <input class="form-control" name="keyword" placeholder="依姓名查詢" style="width:30%;margin-top:10px;display: initial;">
+            單位:
+            <select name="notice_class" id="unit_select">
+                <option value="">
+            </select>
+            <button type="button" class="btn btn-info" >搜尋</button>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-8 col-md-8"">
             <h2>選單權限設定</h2>
 
