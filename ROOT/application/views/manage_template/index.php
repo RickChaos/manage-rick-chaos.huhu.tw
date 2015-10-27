@@ -90,19 +90,26 @@
 			<!-- 人員專區-->
 			<div class="row">
 
-				<!--Test-->
-				<?php for($i=0 ; $i< count($PersonalData) ;$i++){?>
+				<!--人員列表-->
+				<?php for($i=0 ; $i< count($Personal) ;$i++){
+						?>
 				<div class="col-lg-6 col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i><?php echo $PersonalData[$i]['Name']?></h3>
+							<h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i><?php echo $Personal[$i]['Name']?></h3>
 						</div>
 						<div class="panel-body">
 							<div class="list-group">
-									<a href="#" class="list-group-item">
-										<span class="badge"><?php echo substr($PersonalData[$i]['PostTime'],0,10) ?></span>
-										<i class="fa fa-fw fa-calendar"></i>  <?php echo $PersonalData[$i]['Subject'] ?>
-									</a>
+								<?php for($j=0 ; $j < count($PersonalData);$j++) {
+									if ($PersonalData[$j]['Class_Id'] == $Personal[$i]['Class_Id']) {
+										?>
+										<a href="#" class="list-group-item">
+											<span
+												class="badge"><?php echo substr($PersonalData[$j]['PostTime'], 0, 10) ?></span>
+											<i class="fa fa-fw fa-calendar"></i> <?php echo $PersonalData[$j]['Subject'] ?>
+										</a>
+									<?php }
+								}?>
 							</div>
 						</div>
 					</div>
