@@ -105,8 +105,7 @@ class Manage_template extends CI_Controller
         $data['Todolist'] = $this->Manage_Template_Model->get_todo_list();
         $data['Completion'] = $this->Manage_Template_Model->get_completion();
         $data['PersonalData']= $this->Manage_Template_Model->get_personalData();
-        $data['Personal']= $this->Manage_Template_Model->get_personal();
-
+        $data['Personal']=$this->Manage_Template_Model->get_personal();
         $this->load->view('manage_template/index', $data);
     }
 
