@@ -27,11 +27,27 @@ class Authority_menu extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('content/Authority_menu_model');
+        $this->load->helper('form');
     }
 
     public function index()
     {
+        $user_name=$this->input->post('user_name');
+        $unit=$this->input->post('unit_select');
+        $query = $this->Authority_menu_model->get_all_user($user_name,$unit);
         $data['validate_message'] = "";
+        $data['all_user'] = $query;
+        $hidden_item = array(
+            'query_unit'  =>  $unit
+        );
+        $data['hidden_item'] = $hidden_item;
+        $data['user_name'] = $user_name;
         $this->load->view('authority_menu/authority_menu_list', $data);
+    }
+    public function get_unit(){
+        $this->output->set_content_type('application/json');
+        $query = $this->Authority_menu_model->get_unit();
+        echo json_encode($query);
     }
 }
