@@ -50,4 +50,8 @@ class Authority_menu extends CI_Controller
         $query = $this->Authority_menu_model->get_unit();
         echo json_encode($query);
     }
+
+    public function authority($user_id){
+
+    }
 }
