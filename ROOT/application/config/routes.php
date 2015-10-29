@@ -91,7 +91,7 @@ $route['member_center/default'] = 'content/member_center/index';
 /*---- 選單權限設定  ----*/
 $route['authority_menu/index'] = 'content/authority_menu/index';
 $route['authority_menu/all_unit'] = 'content/authority_menu/get_unit';
-$route['authority_menu/authority/(:any)'] = 'content/authority_menu/authority/$1';
+$route['authority_menu/authority/(:any)'] = 'content/authority_menu/authority_setting/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
