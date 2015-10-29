@@ -29,6 +29,7 @@ class Authority_menu extends CI_Controller
         parent::__construct();
         $this->load->model('content/Authority_menu_model');
         $this->load->helper('form');
+        $this->load->helper('security');
     }
 
     public function index()
@@ -39,10 +40,10 @@ class Authority_menu extends CI_Controller
         $data['validate_message'] = "";
         $data['all_user'] = $query;
         $hidden_item = array(
-            'query_unit'  =>  $unit
+            'query_unit'  =>  xss_clean($unit)
         );
         $data['hidden_item'] = $hidden_item;
-        $data['user_name'] = $user_name;
+        $data['user_name'] = xss_clean($user_name);
         $this->load->view('authority_menu/authority_menu_list', $data);
     }
     public function get_unit(){

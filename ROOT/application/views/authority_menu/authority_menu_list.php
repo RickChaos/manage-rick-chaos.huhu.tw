@@ -61,9 +61,9 @@
                     ?>
                     <tr <?php echo $tr_style?>>
                         <td><?php echo $i+1?></td>
-                        <td><?php echo $user["Unit"]?></td>
-                        <td><a href="window.location=<?php echo base_url("authority_menu/authority/")?>/<?php echo $user["User_Id"]?>"><?php echo $user["User_Name"]?></td>
-                        <td><?php echo $user["User_Title"]?></td>
+                        <td><?php echo xss_clean($user["Unit"])?></td>
+                        <td><a href="<?php echo base_url("authority_menu/authority/")?>/<?php echo xss_clean($user["User_Id"])?>"><?php echo xss_clean($user["User_Name"])?></td>
+                        <td><?php echo xss_clean($user["User_Title"])?></td>
                     </tr>
                 <?php } ?>
                     </tbody>
