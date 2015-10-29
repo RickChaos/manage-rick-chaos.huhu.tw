@@ -34,7 +34,7 @@ class Maintain_menu extends CI_Controller
     }
 
     public function index(){
-        $query_level_one = $this->Manage_Template_Model->get_menu(1, 0);
+        $query_level_one = $this->Maintain_menu_model->get_menu(1, 0);
         $menu = "";
         for ($i = 0; $i < count($query_level_one); $i++) {
             $level_one_name = xss_clean($query_level_one[$i]['Name']);
@@ -44,8 +44,8 @@ class Maintain_menu extends CI_Controller
             if($level_one_type == "folder"){
                 $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_one_id."','modify')\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
                 $menu = $menu . "<ul>";
-                if ($this->Manage_Template_Model->has_node($level_one_id)) {
-                    $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
+                if ($this->Maintain_menu_model->has_node($level_one_id)) {
+                    $query_level_two = $this->Maintain_menu_model->get_menu(2, $level_one_id);
                     for ($j = 0; $j < count($query_level_two); $j++) {
                         $level_two_name = xss_clean($query_level_two[$j]['Name']);
                         $level_two_id = xss_clean($query_level_two[$j]['Id']);
@@ -54,8 +54,8 @@ class Maintain_menu extends CI_Controller
                         if ($level_two_type == "folder") {
                             $menu = $menu . "<span class=\"badge badge-success\" onclick=\"load_folder('".$level_two_id."','modify')\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><a href=\"#\"><i class=\"icon-plus\"></i></a>";
                             $menu = $menu . "<ul>";
-                            if ($this->Manage_Template_Model->has_node($level_two_id)) {
-                                $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
+                            if ($this->Maintain_menu_model->has_node($level_two_id)) {
+                                $query_level_three = $this->Maintain_menu_model->get_menu(3, $level_two_id);
                                 for ($k = 0; $k < count($query_level_three); $k++) {
                                     $menu = $menu . "<li>";
                                     $level_three_name = xss_clean($query_level_three[$k]['Name']);
@@ -177,7 +177,7 @@ class Maintain_menu extends CI_Controller
         $data["result"] = "";
         $data["message"] = "";
 
-        if($this->Manage_Template_Model->has_node($id)){
+        if($this->Maintain_menu_model->has_node($id)){
             $data["result"] = "fail";
             $data["message"] = "該資料夾下尚有節點，請先刪除子節點";
         }else{

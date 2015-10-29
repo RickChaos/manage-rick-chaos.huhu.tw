@@ -52,7 +52,68 @@ class Authority_menu extends CI_Controller
         echo json_encode($query);
     }
 
-    public function authority($user_id){
+    public function authority_setting($user_id){
+        $query_level_one = $this->Authority_menu_model->get_menu(1, 0);
 
+        $menu = "";
+        for ($i = 0; $i < count($query_level_one); $i++) {
+            $level_one_name = xss_clean($query_level_one[$i]['Name']);
+            $level_one_id = xss_clean($query_level_one[$i]['Id']);
+            $level_one_type = xss_clean($query_level_one[$i]['Type']);
+            $menu = $menu . "<li>";
+            if($level_one_type == "folder"){
+                $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\">";
+                $menu = $menu . "<ul>";
+                if ($this->Authority_menu_model->has_node($level_one_id)) {
+                    $query_level_two = $this->Authority_menu_model->get_menu(2, $level_one_id);
+                    for ($j = 0; $j < count($query_level_two); $j++) {
+                        $level_two_name = xss_clean($query_level_two[$j]['Name']);
+                        $level_two_id = xss_clean($query_level_two[$j]['Id']);
+                        $level_two_type = xss_clean($query_level_two[$j]['Type']);
+                        $menu = $menu . "<li>";
+                        if ($level_two_type == "folder") {
+                            $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\">";
+                            $menu = $menu . "<ul>";
+                            if ($this->Authority_menu_model->has_node($level_two_id)) {
+                                $query_level_three = $this->Authority_menu_model->get_menu(3, $level_two_id);
+                                for ($k = 0; $k < count($query_level_three); $k++) {
+                                    $menu = $menu . "<li>";
+                                    $level_three_name = xss_clean($query_level_three[$k]['Name']);
+                                    $level_three_id = xss_clean($query_level_three[$k]['Id']);
+                                    $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_three_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_three_id."\" style=\"margin: 0 5px 0 5px;\">";
+                                    $menu = $menu . "</li>";
+                                }
+                            }
+                            $menu = $menu . "</ul>";
+                        }else{
+                            $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_two_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\">";
+                        }
+                        $menu = $menu . "</li>";
+                    }
+                }
+                $menu = $menu . "</ul>";
+            }else{
+                $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_one_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\">";
+            }
+            $menu = $menu . "</li>";
+        }
+        $menu = $menu . " </ul>";
+        $data["menu"] = $menu;
+        $hidden_item = array(
+            'user_id'  =>  xss_clean($user_id[0])
+        );
+        $data['hidden_item'] = $hidden_item;
+        $this->load->view('authority_menu/authority_menu_setting', $data);
+    }
+
+    public function authority_save(){
+        $agree_ids = $this->input->post('agree_id');
+        $user_id = $this->input->post('user_id');
+        $this->Authority_menu_model->del_all_data($user_id);
+        for ($i = 0; $i < count($agree_ids); $i++) {
+            $agree_id = $agree_ids[$i];
+            $this->Authority_menu_model->save_data($user_id,$agree_id,$this->session->user_name);
+        }
+        redirect('authority_menu/index');
     }
 }

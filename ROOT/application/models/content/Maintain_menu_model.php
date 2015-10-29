@@ -17,6 +17,18 @@ class Maintain_menu_model extends CI_Model
         $query = $this->db->query($sql, array($id));
         return $query->row();
     }
+    public function get_menu($node_level, $parent)
+    {
+        $sql = "select * from Manage_Ap_Tree where Node_Level = ? and Parent = ? order by Sequence";
+        $query = $this->db->query($sql, array($node_level, $parent));
+        return $query->result_array();
+    }
+    public function has_node($node_id)
+    {
+        $sql = "select * from Manage_Ap_Tree where Parent = ?";
+        $query = $this->db->query($sql, array($node_id));
+        return $query->num_rows() > 0;
+    }
     public function update_folder_node($id,$name,$sequence){
         $data = array('Name' => $name,'Sequence'=>$sequence);
         $this->db->where('Id', $id);
