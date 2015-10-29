@@ -85,8 +85,8 @@ class Maintain_menu extends CI_Controller
     public function load_function($id){
         $this->output->set_content_type('application/json');
         $query = $this->Maintain_menu_model->get_node_info($id);
-        $data["Name"] = $query->Name;
-        $data["Url"] = $query->Promgram_Url;
+        $data["Name"] =  $query->Name;
+        $data["Url"] =  $query->Promgram_Url;
         $data["Sequence"] = $query->Sequence;
         echo json_encode($data);
     }
