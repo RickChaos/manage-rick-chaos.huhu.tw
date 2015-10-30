@@ -15,13 +15,15 @@ class Manage_template_model extends CI_Model
     }
 
     public function get_todo_list()
-    {   $sql = "select * from Manage_NoticeData where Class_Id = ? ";
+    {
+        $sql = "select * from Manage_NoticeData where Class_Id = ? ";
         $query = $this->db->query($sql, array('1'));
         return $query->result_array();
     }
 
     public function get_completion()
-    {   $sql = "select * from Manage_NoticeData where Complete = ? ";
+    {
+        $sql = "select * from Manage_NoticeData where Complete = ? ";
         $query = $this->db->query($sql, array('Y'));
         return $query->result_array();
     }
@@ -30,17 +32,19 @@ class Manage_template_model extends CI_Model
     {
         $this->db->select('mc.Subject as Name,md.Subject,md.PostTime,md.*');
         $this->db->from('Manage_NoticeData as md');
-        $this->db->join('Manage_NoticeClass as mc','md.Class_Id=mc.Class_Id');
+        $this->db->join('Manage_NoticeClass as mc', 'md.Class_Id=mc.Class_Id');
         $this->db->where('mc.Subject !=', '-');
         $this->db->where('md.Complete', 'N');
         $this->db->order_by('Class_Id', 'DESC');
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function get_personal(){
+
+    public function get_personal()
+    {
         $this->db->select('*,mc.Subject as Name');
         $this->db->from('Manage_NoticeData as md');
-        $this->db->join('Manage_NoticeClass as mc','md.Class_Id=mc.Class_Id');
+        $this->db->join('Manage_NoticeClass as mc', 'md.Class_Id=mc.Class_Id');
         $this->db->where('mc.Subject !=', '-');
         $this->db->where('md.Complete', 'N');
         $this->db->order_by('mc.Class_Id', 'DESC');
@@ -49,10 +53,10 @@ class Manage_template_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_menu($node_level, $parent)
+    public function get_menu($node_level, $parent, $userid)
     {
-        $sql = "select * from Manage_Ap_Tree where Node_Level = ? and Parent = ? order by Sequence";
-        $query = $this->db->query($sql, array($node_level, $parent));
+        $sql = "select * from Manage_Ap_Tree where Node_Level = ? and Parent = ? and Id in (select Menu_Id as Id from Manage_Authority_Menu where User_Id = ?) order by Sequence,CreateTime";
+        $query = $this->db->query($sql, array($node_level, $parent, $userid));
         return $query->result_array();
     }
 

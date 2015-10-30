@@ -54,4 +54,13 @@ class Authority_menu_model extends CI_Model
         $this->db->set('Authority_Name', $authority_name);
         $this->db->insert('Manage_Authority_Menu');
     }
+    public function get_agree_menu_id($user_id){
+        $this->db->select('*');
+        $this->db->from('Manage_Authority_Menu');
+        if($user_id != null){
+            $this->db->where('User_Id', $user_id);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
