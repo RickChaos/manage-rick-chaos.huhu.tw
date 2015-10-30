@@ -94,5 +94,8 @@ $route['authority_menu/all_unit'] = 'content/authority_menu/get_unit';
 $route['authority_menu/authority/(:any)'] = 'content/authority_menu/authority_setting/$1';
 $route['authority_menu/save'] = 'content/authority_menu/authority_save';
 
+/*---- 員工帳號維護功能  ----*/
+$route['content/member_mdy'] = 'content/member_mdy/member_class';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
