@@ -38,7 +38,7 @@ class Manage_template extends CI_Controller
     public function left()
     {
         $userid = $this->session->user_id;
-        $query_level_one = $this->Manage_Template_Model->get_menu(1, 0);
+        $query_level_one = $this->Manage_Template_Model->get_menu(1, 0,$userid);
         $menu = " <ul class=\"nav navbar-nav side-nav\">";
         for ($i = 0; $i < count($query_level_one); $i++) {
             $level_one_name = xss_clean($query_level_one[$i]['Name']);
@@ -51,7 +51,7 @@ class Manage_template extends CI_Controller
                 if ($this->Manage_Template_Model->has_node($level_one_id)) {
                     $menu = $menu .  " <i class=\"fa fa-fw fa-caret-down\"></i></a>" ;
                     $menu = $menu . "<ul id=\"demo" . $i . "\" class=\"collapse\">";
-                    $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id);
+                    $query_level_two = $this->Manage_Template_Model->get_menu(2, $level_one_id,$userid);
                     for ($j = 0; $j < count($query_level_two); $j++) {
                         $level_two_name = xss_clean($query_level_two[$j]['Name']);
                         $level_two_id = xss_clean($query_level_two[$j]['Id']);
@@ -63,7 +63,7 @@ class Manage_template extends CI_Controller
                             if ($this->Manage_Template_Model->has_node($level_two_id)) {
                                 $menu = $menu ." <i class=\"fa fa-fw fa-caret-down\"></i></a>";
                                 $menu = $menu . "<ul id=\"demo" . $i . "_" . $j . "\" class=\"collapse\">";
-                                $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id);
+                                $query_level_three = $this->Manage_Template_Model->get_menu(3, $level_two_id,$userid);
                                 for ($k = 0; $k < count($query_level_three); $k++) {
                                     $level_three_name = xss_clean($query_level_three[$k]['Name']);
                                     $level_three_promgram_url = xss_clean($query_level_three[$k]['Promgram_Url']);

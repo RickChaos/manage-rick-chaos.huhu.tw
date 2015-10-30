@@ -54,15 +54,26 @@ class Authority_menu extends CI_Controller
 
     public function authority_setting($user_id){
         $query_level_one = $this->Authority_menu_model->get_menu(1, 0);
-
+        $query_menu_id = $this->Authority_menu_model->get_agree_menu_id($user_id[0]);
+        $menu_id = array();
+        foreach ($query_menu_id as $row)
+        {
+            array_push($menu_id,$row->Menu_Id);
+        }
         $menu = "";
         for ($i = 0; $i < count($query_level_one); $i++) {
             $level_one_name = xss_clean($query_level_one[$i]['Name']);
             $level_one_id = xss_clean($query_level_one[$i]['Id']);
             $level_one_type = xss_clean($query_level_one[$i]['Type']);
             $menu = $menu . "<li>";
+            $checked="";
             if($level_one_type == "folder"){
-                $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\">";
+                if(in_array($level_one_id,$menu_id)){
+                    $checked = "checked";
+                }else{
+                    $checked="";
+                }
+                $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_one_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\" ".$checked.">";
                 $menu = $menu . "<ul>";
                 if ($this->Authority_menu_model->has_node($level_one_id)) {
                     $query_level_two = $this->Authority_menu_model->get_menu(2, $level_one_id);
@@ -72,7 +83,12 @@ class Authority_menu extends CI_Controller
                         $level_two_type = xss_clean($query_level_two[$j]['Type']);
                         $menu = $menu . "<li>";
                         if ($level_two_type == "folder") {
-                            $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\">";
+                            if(in_array($level_two_id,$menu_id)){
+                                $checked = "checked";
+                            }else{
+                                $checked="";
+                            }
+                            $menu = $menu . "<span class=\"badge badge-success\"><i class=\"icon-folder-close\"></i> " . $level_two_name."</span><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\" ".$checked." >";
                             $menu = $menu . "<ul>";
                             if ($this->Authority_menu_model->has_node($level_two_id)) {
                                 $query_level_three = $this->Authority_menu_model->get_menu(3, $level_two_id);
@@ -80,20 +96,35 @@ class Authority_menu extends CI_Controller
                                     $menu = $menu . "<li>";
                                     $level_three_name = xss_clean($query_level_three[$k]['Name']);
                                     $level_three_id = xss_clean($query_level_three[$k]['Id']);
-                                    $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_three_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_three_id."\" style=\"margin: 0 5px 0 5px;\">";
+                                    if(in_array($level_three_id,$menu_id)){
+                                        $checked = "checked";
+                                    }else{
+                                        $checked="";
+                                    }
+                                    $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_three_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_three_id."\" style=\"margin: 0 5px 0 5px;\" ".$checked." >";
                                     $menu = $menu . "</li>";
                                 }
                             }
                             $menu = $menu . "</ul>";
                         }else{
-                            $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_two_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\">";
+                            if(in_array($level_two_id,$menu_id)){
+                                $checked = "checked";
+                            }else{
+                                $checked="";
+                            }
+                            $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_two_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_two_id."\" style=\"margin: 0 5px 0 5px;\" ".$checked." >";
                         }
                         $menu = $menu . "</li>";
                     }
                 }
                 $menu = $menu . "</ul>";
             }else{
-                $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_one_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\">";
+                if(in_array($level_one_id,$menu_id)){
+                    $checked = "checked";
+                }else{
+                    $checked="";
+                }
+                $menu = $menu . "<a ><span><i class=\"icon-cog\"></i> ".$level_one_name."</span></a><input type=\"checkbox\" name=\"agree_id[]\" value=\"".$level_one_id."\" style=\"margin: 0 5px 0 5px;\" ".$checked.">";
             }
             $menu = $menu . "</li>";
         }
