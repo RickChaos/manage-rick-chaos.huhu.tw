@@ -14,7 +14,7 @@ class Manage_template_model extends CI_Model
         $this->load->database();
     }
 
-    public function get_todo_list()
+    public function get_NoticeData()
     {
         $sql = "select * from Manage_NoticeData where Class_Id = ? ";
         $query = $this->db->query($sql, array('1'));
@@ -22,9 +22,11 @@ class Manage_template_model extends CI_Model
     }
 
     public function get_completion()
-    {
-        $sql = "select * from Manage_NoticeData where Complete = ? ";
-        $query = $this->db->query($sql, array('Y'));
+    {   $this->db->select('c.Subject as Name,c.Class_Id,d.*');
+        $this->db->from('Manage_NoticeData as d');
+        $this->db->join('Manage_NoticeClass as c','d.Class_Id=c.Class_Id');
+        $this->db->where('d.Complete','Y');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
