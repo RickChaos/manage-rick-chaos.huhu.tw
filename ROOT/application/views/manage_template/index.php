@@ -76,7 +76,7 @@
 							<div class="list-group">
 								<?php foreach($Completion as $Completion_Item):?>
 									<a href="#" class="list-group-item">
-										<span class="badge"><?php echo substr($Completion_Item['FinishTime'],0,10) ?></span>
+										<span class="badge"><?php echo $Completion_Item['Name'] ?></span>
 										<i class="fa fa-fw fa-calendar"></i> <?php echo $Completion_Item['Subject'] ?>
 									</a>
 								<?php endforeach ?>
