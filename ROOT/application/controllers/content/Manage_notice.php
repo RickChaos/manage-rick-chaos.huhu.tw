@@ -29,8 +29,9 @@ class Manage_Notice extends CI_Controller
         $this->load->model('content/Manage_Notice_Model');
     }
     public function notice(){
+        $data['NoticeData']=$this->Manage_Notice_Model->get_NoticeData();
         //刪除功能
-        if($this->input->post('noticeSelect')){
+        if($this->input->post('delete')){
             $deleteSelect=$this->input->post('noticeSelect',true);
             for($i = 0 ; $i<count($deleteSelect) ;$i++) {
                 $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
@@ -38,8 +39,15 @@ class Manage_Notice extends CI_Controller
             }
             $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
         }
-        $data['NoticeData']=$this->Manage_Notice_Model->get_NoticeData();
+        //搜尋功能
+        if($this->input->post('search')){
+            $data['Keyword'] = $this->input->post('keyword');
+            $data['Class_Id_Select'] = $this->input->post('classId_Select');
+            $data['Complete_Select']=$this->input->post('complete_Select');
+            $data['NoticeData']=$this->Manage_Notice_Model->search_Notice($data['Keyword'],$data['Class_Id_Select'],$data['Complete_Select']);
+        }
 
+        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
         $this->load->view('notice/notice',$data);
     }
     public function notice_add(){
@@ -73,8 +81,9 @@ class Manage_Notice extends CI_Controller
 
 
     public function notice_class(){
+        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
         //刪除功能
-        if($this->input->post('classSelect')){
+        if($this->input->post('delete')){
             $deleteSelect=$this->input->post('classSelect',true);
             for($i = 0 ; $i<count($deleteSelect) ;$i++) {
                 $data['rtndel'] = $this->Manage_Notice_Model->delete_NoticeClass($deleteSelect[$i]);
@@ -82,7 +91,14 @@ class Manage_Notice extends CI_Controller
             }
             $data['rtndel']=$data['rtndel']!='1'?'刪除失敗!':'刪除成功';
         }
-        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
+        //搜尋功能
+        if($this->input->post('search')){
+            $data['Keyword'] = $this->input->post('keyword');
+            $data['Class_Id_Select'] = $this->input->post('classId_Select');
+            $data['NoticeClass']=$this->Manage_Notice_Model->search_NoticeClass($data['Keyword'],$data['Class_Id_Select']);
+        }
+
+        $data['NoticeClassList']= $this->Manage_Notice_Model->get_NoticeClass();
         $this->load->view('notice/notice_class',$data);
     }
     public function notice_class_add(){
