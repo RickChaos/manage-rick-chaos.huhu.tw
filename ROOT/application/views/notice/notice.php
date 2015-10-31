@@ -57,17 +57,29 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('content/notice_add')?>'" >新增</button>
-                        <button type="submit" class="btn btn-lg btn-danger" onclick="javascript:document.notice_form.submit();">刪除</button>
+                        <button type="submit" name="delete" class="btn btn-lg btn-danger" value="刪除" onclick="javascript:document.notice_form.submit();">刪除</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input class="form-control" name="keyword" placeholder="依標題查詢" style="width:30%;margin-top:10px;display: initial;">
-                        承接者:
-                        <select name="notice_class">
-                            <option value="test">
+                    <div class="col-lg-8 col-md-8">
+                        <input class="form-control" name="keyword" placeholder="依標題查詢" style="width:30%;margin-top:10px;display: initial;" value="<?php echo isset($Keyword)=='1'?$Keyword:'' ?>">
+                        &#9;承接者:
+                        <select name="classId_Select">
+                            <option value="0" <?php echo isset($NoticeClass)=='1'&& $NoticeClass=='0' ?'selected':'' ?>>---請選擇---</option>
+                            <?php for($i = 0 ; $i < count($NoticeClass) ; $i++){?>
+                            <option value="<?php echo $NoticeClass[$i]['Class_Id'] ?>" <?php echo isset($Class_Id_Select)=='1' && $Class_Id_Select==$NoticeClass[$i]['Class_Id'] ?'selected':'' ?>>
+                                <?php echo $NoticeClass[$i]['Subject'] ?>
+                            </option>
+                            <?php }?>
                         </select>
-                        <button type="button" class="btn btn-info" >搜尋</button>
+                        &#9;狀態:
+                        <select name="complete_Select">
+                            <option value="0" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='0' ?'selected':'' ?>>---請選擇---</option>
+                            <option value="Y" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='Y' ?'selected':'' ?>>完成</option>
+                            <option value="N" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='N' ?'selected':'' ?>>未完成</option>
+                        </select>
+                        &#9;　
+                        <button type="submit" name="search" class="btn btn-info" value="搜尋" onclick="document.notice_form.submit();" >搜尋</button>
                     </div>
                 </div>
                 <div class="row">

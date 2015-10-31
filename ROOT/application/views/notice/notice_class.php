@@ -53,7 +53,22 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('content/notice_class_add')?>'" >新增</button>
-                        <button type="submit" class="btn btn-lg btn-danger" onclick="javascript:document.notice_form.submit();">刪除</button>
+                        <button type="submit" name="delete" value="刪除"  class="btn btn-lg btn-danger" onclick="javascript:document.notice_form.submit();">刪除</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <input class="form-control" name="keyword" placeholder="依名稱查詢" style="width:30%;margin-top:10px;display: initial;" value="<?php echo isset($Keyword)=='1'?$Keyword:'' ?>">
+                        &#9;名稱:
+                        <select name="classId_Select">
+                            <option value="0" <?php echo isset($NoticeClass)=='1'&& $NoticeClass=='0' ?'selected':'' ?>>---請選擇---</option>
+                            <?php for($i = 0 ; $i < count($NoticeClassList) ; $i++){?>
+                                <option value="<?php echo $NoticeClassList[$i]['Class_Id'] ?>" <?php echo isset($Class_Id_Select)=='1' && $Class_Id_Select==$NoticeClassList[$i]['Class_Id'] ?'selected':'' ?>>
+                                    <?php echo $NoticeClassList[$i]['Subject'] ?>
+                                </option>
+                            <?php }?>
+                        </select>
+                        <button type="submit" name="search" class="btn btn-info" value="搜尋" onclick="document.notice_form.submit();" >搜尋</button>
                     </div>
                 </div>
                 <div class="row">
@@ -68,10 +83,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php for($i=1;$i< count($NoticeClass);$i++){?>
+                            <?php for($i=0;$i< count($NoticeClass);$i++){?>
                             <tr>
                                 <td><input type="checkbox" name="classSelect[]" value="<?php echo $NoticeClass[$i]['Class_Id'] ?>"> </td>
-                                <td><?php echo $i ?></td>
+                                <td><?php echo $i+1 ?></td>
                                 <td><a href="javascript:mdy('<?php echo $NoticeClass[$i]['Class_Id']?>','<?php echo $NoticeClass[$i]['Subject']?>')"><?php echo $NoticeClass[$i]['Subject'] ?></td>
                             </tr>
                             <?php } ?>
