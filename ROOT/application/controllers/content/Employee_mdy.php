@@ -29,7 +29,7 @@ class Member_Center extends CI_Controller
     }
     public function index(){
 
-        $this->load->view('member_center/member_center');
+        $this->load->view('employee/member_center');
     }
 
 }
