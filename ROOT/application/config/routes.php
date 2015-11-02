@@ -87,6 +87,7 @@ $route['maintain_menu/del_function'] = 'content/maintain_menu/del_function';
 
 /*---- 個人資料修改  ----*/
 $route['content/employee_mdy'] = 'content/employee_mdy/index';
+$route['content/employee_mdy_password'] = 'content/employee_mdy/mdy_password';
 
 /*---- 選單權限設定  ----*/
 $route['authority_menu/index'] = 'content/authority_menu/index';

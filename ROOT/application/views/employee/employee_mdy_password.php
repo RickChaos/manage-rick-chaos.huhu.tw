@@ -33,6 +33,11 @@
     <script>
         <?php if(isset($rtnmdy)){ ?>
             alert('<?php echo $rtnmdy ?>');
+            <?php if($rtnmdy=="修改成功!請重新登入!"){
+                $this->session->set_userdata('user_sessionid', '');
+            ?>
+                parent.parent.window.location.replace("<?php echo base_url("login")?>");
+            <?php }?>
         <?php }?>
     </script>
 </head>
@@ -40,19 +45,14 @@
 <body style="background-color:white">
 
 <?php
-$attributes = array('class' => 'form col-md-12 center-block', 'name' => 'employee_mdy_form');
-echo form_open('content/employee_mdy', $attributes);
+$attributes = array('class' => 'form col-md-12 center-block', 'name' => 'employee_mdy_password_form');
+echo form_open('content/employee_mdy_password', $attributes);
 ?>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <button type="submit" class="btn btn-lg btn-success" name="save" value="儲存" >儲存</button>
 
-        </div>
-    </div>
     <div class="row">
         <div class="col-lg-5 col-md-5">
-            <h2>個人資料修改</h2>
+            <h2>密碼修改</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -65,39 +65,31 @@ echo form_open('content/employee_mdy', $attributes);
                     <tr>
                         <tr>
                             <td>帳號:</td>
-                            <td><?php echo $User_Data[0]['User_Id'] ?></td>
+                            <td><?php echo $User_Id?></td>
                         </tr>
                         <tr>
-                            <td>單位:</td>
-                            <td><?php echo $User_Data[0]['User_Title'] ?></td>
+                            <td>密碼:</td>
+                            <td><input type="text" class="form-control" name="password" value=""/></td>
                         </tr>
                         <tr>
-                            <td>姓名:</td>
-                            <td> <input type="text" class="form-control" name="user_name" value="<?php echo $User_Data[0]['User_Name'] ?>"/> </td>
+                            <td>新密碼:</td>
+                            <td><input type="text" class="form-control" name="mdy_password" value=""/></td>
                         </tr>
                         <tr>
-                            <td>生日:</td>
-                            <td>
-                                <input size="20" type="text" class="form-control" name="birthday" value="<?php echo $User_Data[0]['Birthday'];?>"  id="date" readonly="readonly" style="width:80%;margin-top:10px;display: initial;" /></td>
-                        </tr>
-                        <tr>
-                            <td>地址:</td>
-                            <td><input type="text" class="form-control" name="address" value="<?php echo $User_Data[0]['Address'] ?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td><input type="text" class="form-control" name="email" value="<?php echo $User_Data[0]['Email'] ?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>手機:</td>
-                            <td><input type="text" class="form-control" name="phone" value="<?php echo $User_Data[0]['Phone'] ?>"/></td>
+                            <td>新密碼確認:</td>
+                            <td><input type="text" class="form-control" name="mdy_password_check" value=""/></td>
                         </tr>
                     </tr>
                     </tbody>
                 </table>
-                <a href="<?php echo base_url("content/employee_mdy_password") ?>">密碼修改</a>
             </div>
 
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <button type="submit" class="btn btn-lg btn-warning" name="send" value="送出" >送出</button>
 
         </div>
     </div>
@@ -116,19 +108,6 @@ echo form_open('content/employee_mdy', $attributes);
 <script src="<?php echo js_url("jquery-ui-i18n.js");?>" charset = "utf-8"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo js_url("manage_template/bootstrap.min.js");?>"></script>
-<script type="text/javascript">
-
-    $().ready(function(){
-
-        $( "#date" ).datepicker({
-            dateFormat: 'yy-mm-dd',
-            showOn: "button",
-            buttonImage: "<?php echo img_url("icon-calendar.gif");?>",
-            buttonImageOnly: true
-        });
-    });
-</script>
-
 </body>
 
 </html>
