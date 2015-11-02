@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 
 <head>
 
@@ -28,108 +28,105 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-        <?php if(isset($rtndel)){ ?>
-                    alert('<?php echo $rtndel ?>');
+
+    </script>
+    <script>
+        <?php if(isset($rtnmdy)){ ?>
+            alert('<?php echo $rtnmdy ?>');
         <?php }?>
-        function mdy(mdyid,mdyClassid,mdySubject,mdyComplete){
-            document.notice_form.MdyId.value=mdyid;
-            document.notice_form.MdyClassId.value=mdyClassid;
-            document.notice_form.MdySubject.value=mdySubject;
-            document.notice_form.MdyComplete.value=mdyComplete;
-            document.notice_form.action="<?php echo base_url('content/notice_mdy') ?>";
-            document.notice_form.method="post";
-            document.notice_form.submit();
-        }
     </script>
 </head>
 
 <body style="background-color:white">
 
-        <?php
-        $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'notice_form');
-        echo form_open('content/notice', $attributes);
-        ?>
-            <input type="hidden" name="MdyId" />
-            <input type="hidden" name="MdyClassId" />
-            <input type="hidden" name="MdySubject" />
-            <input type="hidden" name="MdyComplete" />
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <button type="button" class="btn btn-lg btn-success" onclick="location.href='<?php echo base_url('content/notice_add')?>'" >新增</button>
-                        <button type="submit" name="delete" class="btn btn-lg btn-danger" value="刪除" onclick="javascript:document.notice_form.submit();">刪除</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <input class="form-control" name="keyword" placeholder="依標題查詢" style="width:30%;margin-top:10px;display: initial;" value="<?php echo isset($Keyword)=='1'?$Keyword:'' ?>">
-                        &#9;承接者:
-                        <select name="classId_Select">
-                            <option value="0" <?php echo isset($NoticeClass)=='1'&& $NoticeClass=='0' ?'selected':'' ?>>---請選擇---</option>
-                            <?php for($i = 0 ; $i < count($NoticeClass) ; $i++){?>
-                            <option value="<?php echo $NoticeClass[$i]['Class_Id'] ?>" <?php echo isset($Class_Id_Select)=='1' && $Class_Id_Select==$NoticeClass[$i]['Class_Id'] ?'selected':'' ?>>
-                                <?php echo $NoticeClass[$i]['Subject'] ?>
-                            </option>
-                            <?php }?>
-                        </select>
-                        &#9;狀態:
-                        <select name="complete_Select">
-                            <option value="0" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='0' ?'selected':'' ?>>---請選擇---</option>
-                            <option value="Y" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='Y' ?'selected':'' ?>>完成</option>
-                            <option value="N" <?php echo isset($Complete_Select)=='1'&& $Complete_Select=='N' ?'selected':'' ?>>未完成</option>
-                        </select>
-                        &#9;　
-                        <button type="submit" name="search" class="btn btn-info" value="搜尋" onclick="document.notice_form.submit();" >搜尋</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                    <h2>待辦事項維護</h2>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <tr><th></th>
-                                <th>筆數</th>
-                                <th>承接者</th>
-                                <th>標題</th>
-                                <th>發布日期</th>
-                                <th>完成日期</th>
-                                <th>狀態</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php for($i=0;$i< count($NoticeData);$i++){?>
-                            <tr>
-                                <td><input type="checkbox" name="noticeSelect[]" value="<?php echo $NoticeData[$i]['Id'] ?>"> </td>
-                                <td><?php echo $i+1 ?></td>
-                                <td><?php echo $NoticeData[$i]['User'] ?></td>
-                                <td><a href="javascript:mdy('<?php echo $NoticeData[$i]['Id'] ?>','<?php echo $NoticeData[$i]['Class_Id'] ?>','<?php echo $NoticeData[$i]['Subject'] ?>','<?php echo $NoticeData[$i]['Complete'] ?>')"><?php echo $NoticeData[$i]['Subject'] ?></a></td>
-                                <td><?php echo substr($NoticeData[$i]['PostTime'],0,10) ?></td>
-                                <td><?php echo $NoticeData[$i]['FinishTime']==''?'-':substr($NoticeData[$i]['FinishTime'],0,10) ?></td>
-                                <td><?php echo $NoticeData[$i]['Complete']=='N'?'未完成':'完成' ?></td>
+<?php
+$attributes = array('class' => 'form col-md-12 center-block', 'name' => 'employee_mdy_form');
+echo form_open('content/employee_mdy', $attributes);
+?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <button type="submit" class="btn btn-lg btn-success" name="save" value="儲存" >儲存</button>
 
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                </div>
-                </div>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-md-5">
+            <h2>個人資料修改</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>內容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <tr>
+                            <td>帳號:</td>
+                            <td><?php echo $User_Data[0]['User_Id'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>單位:</td>
+                            <td><?php echo $User_Data[0]['User_Title'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>姓名:</td>
+                            <td> <input type="text" class="form-control" name="user_name" value="<?php echo $User_Data[0]['User_Name'] ?>"/> </td>
+                        </tr>
+                        <tr>
+                            <td>生日:</td>
+                            <td>
+                                <input size="20" type="text" class="form-control" name="birthday" value="<?php echo $User_Data[0]['Birthday'];?>"  id="date" readonly="readonly" style="width:80%;margin-top:10px;display: initial;" /></td>
+                        </tr>
+                        <tr>
+                            <td>地址:</td>
+                            <td><input type="text" class="form-control" name="address" value="<?php echo $User_Data[0]['Address'] ?>"/></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="text" class="form-control" name="email" value="<?php echo $User_Data[0]['Email'] ?>"/></td>
+                        </tr>
+                        <tr>
+                            <td>手機:</td>
+                            <td><input type="text" class="form-control" name="phone" value="<?php echo $User_Data[0]['Phone'] ?>"/></td>
+                        </tr>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-        <?php echo form_close(); ?>
+
+
+        </div>
+    </div>
+
+</div>
+<?php echo form_close(); ?>
 
 
 
-   <!-- jQuery -->
-   <script src="<?php echo js_url("manage_template/jquery.js");?>"></script>
-   <!-- Bootstrap Core JavaScript -->
-   <script src="<?php echo js_url("manage_template/bootstrap.min.js");?>"></script>
-    <script>
+<!-- jQuery -->
+<script src="<?php echo js_url("manage_template/jquery.js");?>"></script>
+<!-- 月曆套件 -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js" ></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" ></script>
+<script src="<?php echo js_url("jquery-ui-i18n.js");?>" charset = "utf-8"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="<?php echo js_url("manage_template/bootstrap.min.js");?>"></script>
+<script type="text/javascript">
 
-    </script>
+    $().ready(function(){
+
+        $( "#date" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            showOn: "button",
+            buttonImage: "<?php echo img_url("icon-calendar.gif");?>",
+            buttonImageOnly: true
+        });
+    });
+</script>
 
 </body>
 
