@@ -85,8 +85,8 @@ $route['maintain_menu/add_function'] = 'content/maintain_menu/add_function';
 $route['maintain_menu/del_folder'] = 'content/maintain_menu/del_folder';
 $route['maintain_menu/del_function'] = 'content/maintain_menu/del_function';
 
-/*---- 會員中心  ----*/
-$route['member_center/default'] = 'content/member_center/index';
+/*---- 個人資料修改  ----*/
+$route['content/employee_mdy'] = 'content/employee_mdy/index';
 
 /*---- 選單權限設定  ----*/
 $route['authority_menu/index'] = 'content/authority_menu/index';
