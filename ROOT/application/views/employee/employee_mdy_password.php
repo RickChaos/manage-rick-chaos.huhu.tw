@@ -69,15 +69,15 @@ echo form_open('content/employee_mdy_password', $attributes);
                         </tr>
                         <tr>
                             <td>密碼:</td>
-                            <td><input type="text" class="form-control" name="password" value=""/></td>
+                            <td><input type="password" class="form-control" name="password" value=""/></td>
                         </tr>
                         <tr>
                             <td>新密碼:</td>
-                            <td><input type="text" class="form-control" name="mdy_password" value=""/></td>
+                            <td><input type="password" class="form-control" name="mdy_password" value=""/></td>
                         </tr>
                         <tr>
                             <td>新密碼確認:</td>
-                            <td><input type="text" class="form-control" name="mdy_password_check" value=""/></td>
+                            <td><input type="password" class="form-control" name="mdy_password_check" value=""/></td>
                         </tr>
                     </tr>
                     </tbody>

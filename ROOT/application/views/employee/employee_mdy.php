@@ -76,6 +76,10 @@ echo form_open('content/employee_mdy', $attributes);
                             <td> <input type="text" class="form-control" name="user_name" value="<?php echo $User_Data[0]['User_Name'] ?>"/> </td>
                         </tr>
                         <tr>
+                            <td>密碼:</td>
+                            <td><a href="<?php echo base_url("content/employee_mdy_password") ?>" class="btn btn-md btn-danger">密碼修改</a></td>
+                        </tr>
+                        <tr>
                             <td>生日:</td>
                             <td>
                                 <input size="20" type="text" class="form-control" name="birthday" value="<?php echo $User_Data[0]['Birthday'];?>"  id="date" readonly="readonly" style="width:80%;margin-top:10px;display: initial;" /></td>
@@ -95,7 +99,7 @@ echo form_open('content/employee_mdy', $attributes);
                     </tr>
                     </tbody>
                 </table>
-                <a href="<?php echo base_url("content/employee_mdy_password") ?>">密碼修改</a>
+
             </div>
 
 
@@ -124,7 +128,8 @@ echo form_open('content/employee_mdy', $attributes);
             dateFormat: 'yy-mm-dd',
             showOn: "button",
             buttonImage: "<?php echo img_url("icon-calendar.gif");?>",
-            buttonImageOnly: true
+            buttonImageOnly: true,
+            changeYear: true
         });
     });
 </script>
