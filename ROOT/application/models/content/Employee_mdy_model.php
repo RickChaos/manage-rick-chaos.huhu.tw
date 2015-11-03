@@ -28,7 +28,7 @@ class Employee_mdy_model extends CI_Model
     }
     public function get_Employee_Single($user_id){
         $this->db->select('*');
-        $this->db->from('Manage_Empolyee');
+        $this->db->from('Manage_Employee');
         $this->db->where('User_Id',$user_id);
         $query = $this->db->get();
         return $query->result_array();
@@ -38,12 +38,12 @@ class Employee_mdy_model extends CI_Model
     {
         $data = array('User_Name' => $user_name,'Birthday' => $birthday,'Address'=>$address,'Email' => $email,'Phone' => $phone);
         $this->db->where('User_Id', $user_id);
-        return $this->db->update('Manage_Empolyee', $data);
+        return $this->db->update('Manage_Employee', $data);
     }
     public function update_Employee_Password($user_id,$password)
     {
         $data = array('User_Password' => $password);
         $this->db->where('User_Id', $user_id);
-        return $this->db->update('Manage_Empolyee', $data);
+        return $this->db->update('Manage_Employee', $data);
     }
 }

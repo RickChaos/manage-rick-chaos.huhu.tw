@@ -15,7 +15,7 @@ class Authority_menu_model extends CI_Model
 
     public function get_all_user($name,$unit){
         $this->db->select('*');
-        $this->db->from('Manage_Empolyee');
+        $this->db->from('Manage_Employee');
         if($name != null){
             $this->db->like('User_Name', $name);
         }
@@ -27,7 +27,7 @@ class Authority_menu_model extends CI_Model
     }
 
     public function get_unit(){
-        $sql = "select DISTINCT unit from Manage_Empolyee ";
+        $sql = "select DISTINCT unit from Manage_Employee ";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
