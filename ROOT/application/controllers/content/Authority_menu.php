@@ -44,6 +44,7 @@ class Authority_menu extends CI_Controller
         );
         $data['hidden_item'] = $hidden_item;
         $data['user_name'] = xss_clean($user_name);
+
         $this->load->view('authority_menu/authority_menu_list', $data);
     }
     public function get_unit(){
