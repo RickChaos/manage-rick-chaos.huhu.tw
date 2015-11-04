@@ -109,7 +109,7 @@ class CI_Pagination {
 	 *
 	 * @var	bool
 	 */
-	protected $use_page_numbers = FALSE;
+	protected $use_page_numbers = TRUE;
 
 	/**
 	 * First link
@@ -151,14 +151,14 @@ class CI_Pagination {
 	 *
 	 * @var	string
 	 */
-	protected $full_tag_open = '<ul class="pagination">';
+	protected $full_tag_open = '<div style="text-align: center"><ul class="pagination">';
 
 	/**
 	 * Full tag close
 	 *
 	 * @var	string
 	 */
-	protected $full_tag_close = '</ul>';
+	protected $full_tag_close = '</ul></div>';
 
 	/**
 	 * First tag open
@@ -258,14 +258,14 @@ class CI_Pagination {
 	 *
 	 * @var	bool
 	 */
-	protected $page_query_string = FALSE;
+	protected $page_query_string = TRUE;
 
 	/**
 	 * Query string segment
 	 *
 	 * @var	string
 	 */
-	protected $query_string_segment = 'per_page';
+	protected $query_string_segment = 'page';
 
 	/**
 	 * Display pages flag
