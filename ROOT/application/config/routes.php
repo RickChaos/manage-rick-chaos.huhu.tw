@@ -97,6 +97,11 @@ $route['authority_menu/save'] = 'content/authority_menu/authority_save';
 
 /*---- 員工帳號維護功能  ----*/
 $route['content/member_mdy'] = 'content/member_mdy/member_class';
+$route['content/member_password_mdy/(:any)'] = 'content/member_mdy/member_password_mdy/$1';
+$route['content/member_all_mdy/(:any)'] = 'content/member_mdy/member_all_mdy/$1';
+$route['content/member_password_save'] = 'content/member_mdy/member_password_save';
+$route['content/member_all_save'] = 'content/member_mdy/member_all_save';
+$route['content/member_search'] = 'content/member_mdy/member_search';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
