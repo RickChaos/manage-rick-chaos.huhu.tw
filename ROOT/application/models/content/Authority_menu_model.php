@@ -12,8 +12,7 @@ class Authority_menu_model extends CI_Model
     {
         $this->load->database();
     }
-
-    public function get_all_user($name,$unit){
+    public function get_all_user_count($name,$unit){
         $this->db->select('*');
         $this->db->from('Manage_Employee');
         if($name != null){
@@ -22,6 +21,19 @@ class Authority_menu_model extends CI_Model
         if($unit != null){
             $this->db->where('Unit', $unit);
         }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function get_all_user($name,$unit,$num, $offset){
+        $this->db->select('*');
+        $this->db->from('Manage_Employee');
+        if($name != null){
+            $this->db->like('User_Name', $name);
+        }
+        if($unit != null){
+            $this->db->where('Unit', $unit);
+        }
+        $this->db->limit($num, $offset);
         $query = $this->db->get();
         return $query->result_array();
     }

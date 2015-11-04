@@ -34,17 +34,33 @@ class Authority_menu extends CI_Controller
 
     public function index()
     {
+        $this->load->library('pagination');
+
         $user_name=$this->input->post('user_name');
         $unit=$this->input->post('unit_select');
-        $query = $this->Authority_menu_model->get_all_user($user_name,$unit);
-        $data['validate_message'] = "";
+
+        //接收第幾頁
+        $page = $this->input->get('page',TRUE);
+        if(!$page){
+            $page = '1';
+        }
+        //先取得總共有多少資料
+        $config['total_rows'] = $this->Authority_menu_model->get_all_user_count($user_name,$unit);
+        //該頁的網址
+        $config['base_url'] = base_url().'authority_menu/index';
+        //幾筆為一頁
+        $config['per_page'] = 15;
+        $start = $config['per_page'] * ($page-1);
+        //開始撈資料
+        $query = $this->Authority_menu_model->get_all_user($user_name,$unit,$config['per_page'],$start);
+
         $data['all_user'] = $query;
         $hidden_item = array(
             'query_unit'  =>  xss_clean($unit)
         );
         $data['hidden_item'] = $hidden_item;
         $data['user_name'] = xss_clean($user_name);
-
+        $this->pagination->initialize($config);
         $this->load->view('authority_menu/authority_menu_list', $data);
     }
     public function get_unit(){
