@@ -103,5 +103,8 @@ $route['content/member_password_save'] = 'content/member_mdy/member_password_sav
 $route['content/member_all_save'] = 'content/member_mdy/member_all_save';
 $route['content/member_search'] = 'content/member_mdy/member_search';
 
+/*---- 訊息功能  ----*/
+$route['message/index'] = 'public_program/message/index';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
