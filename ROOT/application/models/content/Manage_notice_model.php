@@ -14,7 +14,10 @@ class Manage_notice_model extends CI_Model {
     }
     public function get_NoticeClass()
     {
-        $query = $this->db->get('Manage_NoticeClass');
+        $this->db->select('*');
+        $this->db->from('Manage_NoticeClass');
+        $this->db->where('Class_Id!=','1');
+        $query = $this->db->get();
         return $query->result_array();
     }
     public function get_NoticeData()
@@ -34,7 +37,7 @@ class Manage_notice_model extends CI_Model {
     }
     public function insert_NoticeData($subject)
     {   $datetime = date ("Y-m-d H:i:s");
-        $sqlData = array('Id' => NULL,'Class_Id'=> '1', 'Subject' => $subject, 'PostTime' => $datetime,'Complete' => 'N');
+        $sqlData = array('Id'=>NULL, 'Class_Id'=> 1, 'Subject' => $subject, 'PostTime' => $datetime,'Complete' => 'N');
         $sql=$this->db->insert_string('Manage_NoticeData',$sqlData);
 
         return $this->db->simple_query($sql);
