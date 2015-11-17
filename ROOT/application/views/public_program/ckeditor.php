@@ -8,15 +8,13 @@
 <html>
 <head>
     <script src="<?php echo js_url("ckeditor/ckeditor.js"); ?>"></script>
+    <script src="<?php echo js_url("ckfinder/ckfinder.js"); ?>"></script>
 </head>
 <body>
-         <textarea name="editor1" id="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor.
-            </textarea>
+         <textarea name="editor1" id="content" rows="10" cols="80"></textarea>
          <script>
-             // Replace the <textarea id="editor1"> with a CKEditor
-             // instance, using default configuration.
-             CKEDITOR.replace( 'editor1' );
+             var editor =CKEDITOR.replace( 'content' );
+             CKFinder.setupCKEditor( editor );
          </script>
 </body>
 </html>
