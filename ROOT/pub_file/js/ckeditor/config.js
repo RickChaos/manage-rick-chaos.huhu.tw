@@ -14,4 +14,33 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
+	config.toolbarGroups = [
+		'/',
+		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+		{ name: 'forms', groups: [ 'forms' ] },
+		{ name: 'insert', groups: [ 'insert' ] },
+		'/',
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+		{ name: 'links', groups: [ 'links' ] },
+		'/',
+		{ name: 'styles', groups: [ 'styles' ] },
+		{ name: 'colors', groups: [ 'colors' ] },
+		{ name: 'tools', groups: [ 'tools' ] },
+		{ name: 'others', groups: [ 'others' ] },
+		{ name: 'about', groups: [ 'about' ] }
+	];
+
+	config.removeButtons = 'Scayt,Maximize,ShowBlocks,About,Language,Radio,Checkbox,Button,ImageButton,HiddenField,Textarea,Select,Form,TextField,Print';
+
+	//ckfinder
+	config.filebrowserImageBrowseUrl = 'pub_file/js/ckfinder/ckfinder.html?Type=Images';
+	config.filebrowserFlashBrowseUrl = 'pub_file/js/ckfinder/ckfinder.html?Type=Flash';
+	config.filebrowserUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+	config.filebrowserWindowWidth = '800';  //“浏览服务器”弹出框的size设置
+	config.filebrowserWindowHeight = '500';
 };
