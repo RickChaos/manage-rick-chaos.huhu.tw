@@ -12,14 +12,9 @@
     <meta charset="utf-8">
     <title>員工帳號維護功能</title>
     <!-- Bootstrap Core Css -->
-    <link href="<?php echo css_url("bootstrap.min.css");?>" rel="stylesheet">
-    <script src="<?php echo js_url("jquery2.0.2.js");?>"></script>
-    <script src="<?php echo js_url("authority_menu/authority.js");?>"></script>
     <!-- jQuery -->
-    <script src="<?php echo js_url("jquery2.0.2.js"); ?>"></script>
+    <link href="<?php echo css_url("bootstrap.min.css");?>" rel="stylesheet">
     <script src="<?php echo js_url("bootstrap.min.js"); ?>"></script>
-    <script src="<?php echo js_url("authority_menu/authority_tree.js"); ?>"></script>
-    <script src="<?php echo js_url("authority_menu/authority_menu_setting.js"); ?>"></script>
     <!-- 月曆套件 -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.9.1.js" ></script>
@@ -48,7 +43,7 @@
 <?php
 echo form_open('content/member_all_save','id="save"');
 ?>
-<div class="container-fluid" style="width:100%;padding:50px">
+<div class="container-fluid" style="width:100%;padding:20px">
     <div class="row">
         <div class="col-lg-5 col-md-5">
             <h2>個人資料修改</h2>

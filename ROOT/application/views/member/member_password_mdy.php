@@ -21,15 +21,14 @@
     <script src="<?php echo js_url("authority_menu/authority_tree.js"); ?>"></script>
     <script src="<?php echo js_url("authority_menu/authority_menu_setting.js"); ?>"></script>
     <script>
-        <?php if(isset($rtnmdy)){ ?>
-            alert('<?php echo $rtnmdy ?>');
-            <?php if($rtnmdy=="修改成功!請重新登入!"){
-                    $this->session->set_userdata('user_sessionid', '');
-            ?>
-                parent.parent.window.location.replace("<?php echo base_url("login")?>");
-            <?php }else if($rtnmdy=="修改失敗"){
-                    $userid = $user_id;
-                  }?>
+        <?php if(isset($response)){ ?>
+            <?php if($response=="修改成功"){?>
+                    alert('修改成功!');
+                    window.location.href = "<?php echo base_url("content/member_mdy/")?>";
+            <?php }else if($response=="修改失敗"){
+                    $userid = $user_id;?>
+                    alert('修改失敗，請重新嘗試!');
+            <?php }?>
         <?php }else{
                  $user = array();
                   foreach($user_id as $row){
@@ -62,7 +61,7 @@
 <?php
 echo form_open('content/member_password_save','id="save"');
 ?>
-<div class="container-fluid" style="width:100%;padding:50px">
+<div class="container-fluid" style="width:100%;padding:20px">
     <div class="row">
         <div class="col-lg-5 col-md-5">
             <h2>密碼修改</h2>
