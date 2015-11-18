@@ -102,6 +102,8 @@ $route['content/member_all_mdy/(:any)'] = 'content/member_mdy/member_all_mdy/$1'
 $route['content/member_password_save'] = 'content/member_mdy/member_password_save';
 $route['content/member_all_save'] = 'content/member_mdy/member_all_save';
 $route['content/member_search'] = 'content/member_mdy/member_search';
+$route['content/member_add'] = 'content/member_mdy/member_add';
+$route['content/member_add_save'] = 'content/member_mdy/member_add_save';
 
 /*---- 訊息功能  ----*/
 $route['message/index'] = 'public_program/message/index';
