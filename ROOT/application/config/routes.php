@@ -106,5 +106,10 @@ $route['content/member_search'] = 'content/member_mdy/member_search';
 /*---- 訊息功能  ----*/
 $route['message/index'] = 'public_program/message/index';
 
+/*---- 共用分類  ----*/
+$route['classes/index'] = 'public_program/classes/index';
+$route['classes/add'] = 'public_program/classes/add';
+$route['classes/mdy/(:num)'] = 'public_program/classes/modify';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

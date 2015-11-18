@@ -31,8 +31,6 @@ class Message extends CI_Controller
 
     public function index()
     {
-
-
         $this->load->view('public_program/ckeditor');
     }
 }
