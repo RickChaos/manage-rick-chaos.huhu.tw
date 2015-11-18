@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title></title>
-
+    <script src="<?php echo js_url("authority_menu/authority.js"); ?>"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo css_url("bootstrap.min.css");?>" rel="stylesheet">
     <!-- Custom CSS -->
@@ -117,7 +117,7 @@
 
                 </div>
                 </div>
-
+                <?php echo $this->pagination->create_links(); ?>
             </div>
         <?php echo form_close(); ?>
 

@@ -59,15 +59,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
                         <input class="form-control" name="keyword" placeholder="依名稱查詢" style="width:30%;margin-top:10px;display: initial;" value="<?php echo isset($Keyword)=='1'?$Keyword:'' ?>">
-                        &#9;名稱:
-                        <select name="classId_Select">
-                            <option value="0" <?php echo isset($NoticeClass)=='1'&& $NoticeClass=='0' ?'selected':'' ?>>---請選擇---</option>
-                            <?php for($i = 0 ; $i < count($NoticeClassList) ; $i++){?>
-                                <option value="<?php echo $NoticeClassList[$i]['Class_Id'] ?>" <?php echo isset($Class_Id_Select)=='1' && $Class_Id_Select==$NoticeClassList[$i]['Class_Id'] ?'selected':'' ?>>
-                                    <?php echo $NoticeClassList[$i]['Subject'] ?>
-                                </option>
-                            <?php }?>
-                        </select>
+
                         <button type="submit" name="search" class="btn btn-info" value="搜尋" onclick="document.notice_form.submit();" >搜尋</button>
                     </div>
                 </div>
