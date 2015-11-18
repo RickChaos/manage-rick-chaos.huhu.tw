@@ -20,12 +20,33 @@ class Manage_notice_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function get_NoticeData()
+    public function get_NoticeData($ncSelect,$completeSelect,$keyword,$num,$offset)
     {  $this->db->select('d.Id,c.Class_Id,d.Subject,c.Subject as User,d.PostTime,d.FinishTime,d.Complete');
         $this->db->from('Manage_NoticeData as d');
         $this->db->join('Manage_NoticeClass as c', 'd.Class_Id = c.Class_Id');
+        if($keyword!='')
+            $this->db->like('d.Subject',$keyword);
+        if($completeSelect!='0'&&$completeSelect!=null)
+            $this->db->where('d.Complete',$completeSelect);
+        if($ncSelect!='0'&&$ncSelect!=null)
+            $this->db->where('d.Class_Id',$ncSelect);
+        $this->db->limit($num, $offset);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function get_NoticeData_Count($ncSelect,$completeSelect,$keyword)
+    {  $this->db->select('d.Id,c.Class_Id,d.Subject,c.Subject as User,d.PostTime,d.FinishTime,d.Complete');
+        $this->db->from('Manage_NoticeData as d');
+        $this->db->join('Manage_NoticeClass as c', 'd.Class_Id = c.Class_Id');
+        if($keyword!='')
+            $this->db->like('d.Subject',$keyword);
+        if($completeSelect!='0'&&$completeSelect!=null)
+            $this->db->where('d.Complete',$completeSelect);
+        if($ncSelect!='0'&&$ncSelect!=null)
+            $this->db->where('d.Class_Id',$ncSelect);
+        $query = $this->db->get();
+        return $query->num_rows();
     }
     public function delete_NoticeData($getSelect){
 
@@ -77,13 +98,11 @@ class Manage_notice_model extends CI_Model {
 
     }
 
-    public function search_NoticeClass($keyword,$ncSelect){
+    public function search_NoticeClass($keyword){
         $this->db->select('*');
         $this->db->from('Manage_NoticeClass');
         if($keyword!='')
             $this->db->like('Subject',$keyword);
-        if($ncSelect!='0')
-            $this->db->where('Class_Id',$ncSelect);
         $query = $this->db->get();
         return $query->result_array();
 
