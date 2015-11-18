@@ -13,23 +13,23 @@
 }( function( datepicker ) {
 
 datepicker.regional[ "zh-TW" ] = {
-	closeText: "Ãö³¬",
-	prevText: "&#x3C;¤W¤ë",
-	nextText: "¤U¤ë&#x3E;",
-	currentText: "¤µ¤Ñ",
-	monthNames: [ "¤@¤ë","¤G¤ë","¤T¤ë","¥|¤ë","¤­¤ë","¤»¤ë",
-	"¤C¤ë","¤K¤ë","¤E¤ë","¤Q¤ë","¤Q¤@¤ë","¤Q¤G¤ë" ],
-	monthNamesShort: [ "¤@¤ë","¤G¤ë","¤T¤ë","¥|¤ë","¤­¤ë","¤»¤ë",
-	"¤C¤ë","¤K¤ë","¤E¤ë","¤Q¤ë","¤Q¤@¤ë","¤Q¤G¤ë" ],
-	dayNames: [ "¬P´Á¤é","¬P´Á¤@","¬P´Á¤G","¬P´Á¤T","¬P´Á¥|","¬P´Á¤­","¬P´Á¤»" ],
-	dayNamesShort: [ "©P¤é","©P¤@","©P¤G","©P¤T","©P¥|","©P¤­","©P¤»" ],
-	dayNamesMin: [ "¤é","¤@","¤G","¤T","¥|","¤­","¤»" ],
-	weekHeader: "©P",
+	closeText: "é—œé–‰",
+	prevText: "&#x3C;ä¸Šæœˆ",
+	nextText: "ä¸‹æœˆ&#x3E;",
+	currentText: "ä»Šå¤©",
+	monthNames: [ "ä¸€æœˆ","äºŒæœˆ","ä¸‰æœˆ","å››æœˆ","äº”æœˆ","å…­æœˆ",
+	"ä¸ƒæœˆ","å…«æœˆ","ä¹æœˆ","åæœˆ","åä¸€æœˆ","åäºŒæœˆ" ],
+	monthNamesShort: [ "ä¸€æœˆ","äºŒæœˆ","ä¸‰æœˆ","å››æœˆ","äº”æœˆ","å…­æœˆ",
+	"ä¸ƒæœˆ","å…«æœˆ","ä¹æœˆ","åæœˆ","åä¸€æœˆ","åäºŒæœˆ" ],
+	dayNames: [ "æ˜ŸæœŸæ—¥","æ˜ŸæœŸä¸€","æ˜ŸæœŸäºŒ","æ˜ŸæœŸä¸‰","æ˜ŸæœŸå››","æ˜ŸæœŸäº”","æ˜ŸæœŸå…­" ],
+	dayNamesShort: [ "å‘¨æ—¥","å‘¨ä¸€","å‘¨äºŒ","å‘¨ä¸‰","å‘¨å››","å‘¨äº”","å‘¨å…­" ],
+	dayNamesMin: [ "æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­" ],
+	weekHeader: "å‘¨",
 	dateFormat: "yy/mm/dd",
 	firstDay: 1,
 	isRTL: false,
 	showMonthAfterYear: true,
-	yearSuffix: "¦~" };
+	yearSuffix: "å¹´" };
 datepicker.setDefaults( datepicker.regional[ "zh-TW" ] );
 
 return datepicker.regional[ "zh-TW" ];

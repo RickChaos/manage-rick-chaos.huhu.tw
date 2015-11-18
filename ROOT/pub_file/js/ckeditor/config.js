@@ -34,13 +34,16 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.removeButtons = 'Scayt,Maximize,ShowBlocks,About,Language,Radio,Checkbox,Button,ImageButton,HiddenField,Textarea,Select,Form,TextField,Print';
-
+	config.width = '100%';
+	config.height = '100%';
+	config.font_names ='Arial/Arial, Helvetica, sans-serif;Comic Sans MS/Comic Sans MS, cursive;Courier New/Courier New, Courier, monospace;Georgia/Georgia, serif;Lucida Sans Unicode/Lucida Sans Unicode, Lucida Grande, sans-serif;Tahoma/Tahoma, Geneva, sans-serif;Times New Roman/Times New Roman, Times, serif;Trebuchet MS/Trebuchet MS, Helvetica, sans-serif;Verdana/Verdana, Geneva, sans-serif;新細明體;標楷體;微軟正黑體' ;
+	config.image_previewText='';
 	//ckfinder
-	config.filebrowserImageBrowseUrl = 'pub_file/js/ckfinder/ckfinder.html?Type=Images';
-	config.filebrowserFlashBrowseUrl = 'pub_file/js/ckfinder/ckfinder.html?Type=Flash';
-	config.filebrowserUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-	config.filebrowserImageUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-	config.filebrowserFlashUploadUrl = 'pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+	config.filebrowserImageBrowseUrl = '/pub_file/js/ckfinder/ckfinder.html?Type=Images';
+	config.filebrowserFlashBrowseUrl = '/pub_file/js/ckfinder/ckfinder.html?Type=Flash';
+	config.filebrowserUploadUrl = '/pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl = '/pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl = '/pub_file/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 	config.filebrowserWindowWidth = '800';  //“浏览服务器”弹出框的size设置
 	config.filebrowserWindowHeight = '500';
 };
