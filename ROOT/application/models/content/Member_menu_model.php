@@ -55,4 +55,47 @@ class Member_menu_model extends CI_Model
         $this->db->where('User_Id', $User_Id);
         return $this->db->update('Manage_Employee', $data);
     }
+    //搜尋功能
+    public function search_member($keyword){
+        $this->db->select('*');
+        $this->db->from('Manage_Employee');
+        if($keyword!='')
+            $this->db->where('User_Id',$keyword);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    //刪除功能
+    public function del_member($deleteSelect){
+        return  $this->db->delete('Manage_Employee', array('User_Id' => $deleteSelect));
+    }
+    //新增功能
+    public function member_add($User_Id,$User_Password,$User_Name,$Birthday,$User_Title,$Unit,$Tel,$Phone,$Email,$Address){
+          $data = array(
+              'User_Id' => $User_Id,
+              'User_Password' => $User_Password,
+              'User_Name' => $User_Name,
+              'User_Title' => $User_Title,
+              'Tel' => $Tel,
+              'Address' => $Address,
+              'Email' => $Email,
+              'Phone' => $Phone,
+              'Birthday' => $Birthday,
+              'Unit' => $Unit,
+              'LoginTime' => '',
+              'LoginIp' => '',
+              'Modify_Pw_Date' => '',
+              'SessionId' => ''
+          );
+        $sql = $this->db->insert('Manage_Employee', $data);
+
+        return $this->db->simple_query($sql);
+    }
+    //比對重複帳號
+    public function same_member_add($User_Id){
+        $this->db->select('User_Id');
+        $this->db->from('Manage_Employee');
+        $this->db->where('User_Id',$User_Id);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
 }
