@@ -81,7 +81,7 @@
                             <td><?php echo xss_clean($class->CreateDate) ?></td>
                             <td><?php echo xss_clean($class->UpdateDate) ?></td>
                         </tr>
-                    <?php } ?>
+                    <?php $i++;} ?>
                     </tbody>
                 </table>
                 <?php echo $this->pagination->create_links(); ?>

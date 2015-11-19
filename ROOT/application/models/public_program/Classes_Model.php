@@ -38,10 +38,10 @@ class Classes_model extends CI_Model
     public function query_max_id($table_name,$today){
         $this->db->select('*');
         $this->db->from($table_name);
-        $this->db->like('id', $today);
+        $this->db->like('id', $today, 'after');
         $this->db->order_by('id', 'DESC');
         $query = $this->db->get();
-        return $query->first_row();
+        return $query->row();
     }
 
     public function add_class($table_name,$data_id,$class_name,$create_name){
