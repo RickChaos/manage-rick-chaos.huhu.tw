@@ -34,4 +34,18 @@ class Classes_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function query_max_id($table_name,$today){
+        $this->db->select('*');
+        $this->db->from($table_name);
+        $this->db->like('id', $today);
+        $this->db->order_by('id', 'DESC');
+        $query = $this->db->get();
+        return $query->first_row();
+    }
+
+    public function add_class($table_name,$data_id,$class_name,$create_name){
+        $data = array('Id' => $data_id,'Subject'=>$class_name,'CreateName'=>$create_name);
+        return $this->db->insert($table_name, $data);
+    }
 }
