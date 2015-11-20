@@ -20,13 +20,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="<?php echo css_url("manage_template/plugins/morris.css");?>" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
         <?php if(isset($rtndel)){ ?>
                     alert('<?php echo $rtndel ?>');
@@ -41,11 +35,16 @@
             document.notice_form.submit();
         }
     </script>
+    <script type="text/javascript">
+
+    </script>
 </head>
 
 <body style="background-color:white">
 
-        <?php
+
+
+<?php
         $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'notice_form');
         echo form_open('content/notice', $attributes);
         ?>

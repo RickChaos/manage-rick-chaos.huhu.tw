@@ -28,13 +28,22 @@ class Manage_Notice extends CI_Controller
         $this->load->helper('array');
         $this->load->helper('security');
         $this->load->model('content/Manage_Notice_Model');
+        $this->load->model('content/Weblog_Model');
     }
     public function notice(){
         $this->load->library('pagination');
         $data['Keyword'] = $this->input->post('keyword',TRUE);
         $data['Class_Id_Select'] = $this->input->post('classId_Select',TRUE);
         $data['Complete_Select']=$this->input->post('complete_Select',TRUE);
-
+        //刪除功能
+        if($this->input->post('delete')){
+            $deleteSelect=$this->input->post('noticeSelect',true);
+            for($i = 0 ; $i<count($deleteSelect) ;$i++) {
+                $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
+                if($rtndel!='1')  break;
+            }
+            $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
+        }
 
         //接收第幾頁
         $page = $this->input->get('page',TRUE);
@@ -54,15 +63,7 @@ class Manage_Notice extends CI_Controller
         $data['total_rows']=$config['total_rows'];
 
 
-        //刪除功能
-        if($this->input->post('delete')){
-            $deleteSelect=$this->input->post('noticeSelect',true);
-            for($i = 0 ; $i<count($deleteSelect) ;$i++) {
-                $rtndel = $this->Manage_Notice_Model->delete_NoticeData($deleteSelect[$i]);
-                if($rtndel!='1')  break;
-            }
-            $data['rtndel']=$rtndel!='1'?'刪除失敗!':'刪除成功!';
-        }
+
 
         $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
         $this->pagination->initialize($config);
@@ -71,6 +72,7 @@ class Manage_Notice extends CI_Controller
     public function notice_add(){
         if($this->input->post('title')){
             $data['rtnadd']=$this->Manage_Notice_Model->insert_NoticeData($this->input->post('title',TRUE))!='1'?'寫入失敗!':'寫入成功!';
+            $this->Weblog_Model->weblog( $this->session->user_name,$this->session->node_name,"0",$this->input->post('title',TRUE));
             $this->load->view('notice/notice_add',$data);
         }else {
             $this->load->view('notice/notice_add');
@@ -99,7 +101,7 @@ class Manage_Notice extends CI_Controller
 
 
     public function notice_class(){
-        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
+
         //刪除功能
         if($this->input->post('delete')){
             $deleteSelect=$this->input->post('classSelect',true);
@@ -109,6 +111,7 @@ class Manage_Notice extends CI_Controller
             }
             $data['rtndel']=$data['rtndel']!='1'?'刪除失敗!':'刪除成功';
         }
+        $data['NoticeClass']=$this->Manage_Notice_Model->get_NoticeClass();
         //搜尋功能
         if($this->input->post('search')){
             $data['Keyword'] = $this->input->post('keyword');

@@ -116,5 +116,8 @@ $route['classes/mdy/(:num)'] = 'public_program/classes/modify';
 $route['classes/mdy_save/(:num)'] = 'public_program/classes/modify_save';
 $route['classes/del'] = 'public_program/classes/modify_save';
 
+/*---- WebLog  ----*/
+$route['weblog/index'] = 'content/weblog/index';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -44,6 +44,7 @@ class Authority_menu extends CI_Controller
         if(!$page){
             $page = '1';
         }
+
         //先取得總共有多少資料
         $config['total_rows'] = $this->Authority_menu_model->get_all_user_count($user_name,$unit);
         //該頁的網址
