@@ -25,8 +25,21 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<script>
-		function change_content(url){
+		function change_content(url,node){
 			parent.frames['mainFrame'].location.href=url;
+
+            $.ajax({
+                url:"<?php echo base_url("manage_template/template_left"); ?>",
+                data:"&node_name="+node,
+                type : "POST",
+                dataType:'text',
+                error:function(){
+                    alert("set_node失敗");
+                },
+                //傳送成功則跳出成功訊息
+                success:function(){
+                }
+            });
 		}
 	</script>
 </head>
