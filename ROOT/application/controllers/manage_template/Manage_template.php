@@ -67,14 +67,14 @@ class Manage_template extends CI_Controller
                                 for ($k = 0; $k < count($query_level_three); $k++) {
                                     $level_three_name = xss_clean($query_level_three[$k]['Name']);
                                     $level_three_promgram_url = xss_clean($query_level_three[$k]['Promgram_Url']);
-                                    $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_three_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_three_name . "</a>";
+                                    $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_three_promgram_url) . "','".$level_three_name."')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_three_name . "</a>";
                                 }
                                 $menu = $menu . "</ul>";
                             }else{
                                 $menu = $menu ."</a>" ;
                             }
                         } else {
-                            $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_two_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_two_name . "</a>";
+                            $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_two_promgram_url) . "','".$level_two_name."')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_two_name . "</a>";
                         }
 
                         $menu = $menu . "</li>";
@@ -84,12 +84,16 @@ class Manage_template extends CI_Controller
                     $menu = $menu .   "</a>";
                 }
             }else{
-                $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_one_promgram_url) . "')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_one_name . "</a>";
+                $menu = $menu . "<a href=\"javascript:change_content('" . base_url($level_one_promgram_url) . "','".$level_one_name."')\"><i class=\"fa fa-fw fa-cog\"></i>" . $level_one_name . "</a>";
             }
             $menu = $menu . "</li>";
         }
         $menu = $menu . " </ul>";
         $data["menu"] = $menu;
+
+        if($this->input->post('node_name')){
+            $this->session->set_userdata('node_name',$this->input->post('node_name'));
+        }
         $this->load->view('manage_template/template_left', $data);
     }
 
