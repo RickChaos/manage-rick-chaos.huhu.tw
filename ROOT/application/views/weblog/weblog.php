@@ -57,6 +57,7 @@
                                 <th>功能/節點</th>
                                 <th>動作</th>
                                 <th>內容</th>
+                                <th>更新內容</th>
                                 <th>日期</th>
                             </tr>
                             </thead>
@@ -68,6 +69,7 @@
                                 <td><?php echo $WeblogData[$i]['Node_Name'] ?></td>
                                 <td><?php echo $WeblogData[$i]['Action'] ?></td>
                                 <td><?php echo $WeblogData[$i]['Subject'] ?></td>
+                                <td><?php echo $WeblogData[$i]['Subject_Mdy'] ?></td>
                                 <td><?php echo $WeblogData[$i]['Mdy_Time'] ?></td>
 
                             </tr>

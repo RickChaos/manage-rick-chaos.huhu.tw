@@ -16,10 +16,19 @@ class Manage_notice_model extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('Manage_NoticeClass');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_NoticeClass_Hide()
+    {
+        $this->db->select('*');
+        $this->db->from('Manage_NoticeClass');
         $this->db->where('Class_Id!=','1');
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function get_NoticeData($ncSelect,$completeSelect,$keyword,$num,$offset)
     {  $this->db->select('d.Id,c.Class_Id,d.Subject,c.Subject as User,d.PostTime,d.FinishTime,d.Complete');
         $this->db->from('Manage_NoticeData as d');
@@ -32,6 +41,14 @@ class Manage_notice_model extends CI_Model {
             $this->db->where('d.Class_Id',$ncSelect);
         $this->db->limit($num, $offset);
         $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_NoticeDataById($did){
+        $this->db->select('*');
+        $this->db->from('Manage_NoticeData');
+        $this->db->where('Id',$did);
+        $query= $this->db->get();
         return $query->result_array();
     }
 

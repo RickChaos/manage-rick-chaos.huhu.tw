@@ -78,7 +78,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        標題:
+                                        狀態:
                                     </td>
                                     <td>
                                         <input type="radio" name="Complete" value="Y" <?php echo $MdyComplete=='Y'?'checked':''?> />完成

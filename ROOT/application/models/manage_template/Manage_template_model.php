@@ -35,7 +35,7 @@ class Manage_template_model extends CI_Model
         $this->db->select('mc.Subject as Name,md.Subject,md.PostTime,md.*');
         $this->db->from('Manage_NoticeData as md');
         $this->db->join('Manage_NoticeClass as mc', 'md.Class_Id=mc.Class_Id');
-        $this->db->where('mc.Subject !=', '-');
+        $this->db->where('mc.Subject !=', '未承接');
         $this->db->where('md.Complete', 'N');
         $this->db->order_by('Class_Id', 'DESC');
         $query = $this->db->get();
@@ -47,7 +47,7 @@ class Manage_template_model extends CI_Model
         $this->db->select('*,mc.Subject as Name');
         $this->db->from('Manage_NoticeData as md');
         $this->db->join('Manage_NoticeClass as mc', 'md.Class_Id=mc.Class_Id');
-        $this->db->where('mc.Subject !=', '-');
+        $this->db->where('mc.Subject !=', '未承接');
         $this->db->where('md.Complete', 'N');
         $this->db->order_by('mc.Class_Id', 'DESC');
         $this->db->group_by("mc.Class_Id");

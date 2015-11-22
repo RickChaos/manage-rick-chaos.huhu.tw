@@ -25,7 +25,7 @@ class Weblog_Model extends CI_Model
         $query = $this->db->get();
         return $query->num_rows();
     }
-    public function weblog($user_name,$node_name,$action,$subject){
+    public function weblog($user_name,$node_name,$action,$subject,$subject_mdy){
         if($action=="0")
             $action="新增";
         else if($action=="1")
@@ -38,8 +38,9 @@ class Weblog_Model extends CI_Model
             'User_Name'=> $user_name,
             'Node_Name' => $node_name,
             'Mdy_Time' => $datetime,
-            'action' => $action,
-            'subject' => $subject
+            'Action' => $action,
+            'Subject' => $subject,
+            'Subject_Mdy' => $subject_mdy
             );
 
         $this->db->insert('WebLog', $sql);
