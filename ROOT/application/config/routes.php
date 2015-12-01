@@ -112,9 +112,9 @@ $route['message/index'] = 'public_program/message/index';
 $route['classes/index'] = 'public_program/classes/index';
 $route['classes/add'] = 'public_program/classes/add';
 $route['classes/add_save'] = 'public_program/classes/add_save';
-$route['classes/mdy/(:num)'] = 'public_program/classes/modify';
-$route['classes/mdy_save/(:num)'] = 'public_program/classes/modify_save';
-$route['classes/del'] = 'public_program/classes/modify_save';
+$route['classes/mdy'] = 'public_program/classes/modify';
+$route['classes/mdy_save'] = 'public_program/classes/modify_save';
+$route['classes/del'] = 'public_program/classes/delete';
 
 /*---- WebLog  ----*/
 $route['weblog/index'] = 'content/weblog/index';

@@ -48,4 +48,24 @@ class Classes_model extends CI_Model
         $data = array('Id' => $data_id,'Subject'=>$class_name,'CreateName'=>$create_name);
         return $this->db->insert($table_name, $data);
     }
+
+    public function get_class($tablename,$id){
+        $this->db->select('*');
+        $this->db->from($tablename);
+        $this->db->where('Id',$id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function mdy_class($table_name,$data_id,$class_name,$update_name){
+        $this->db->set('Subject',$class_name);
+        $this->db->set('UpdateName',$update_name);
+        $this->db->set('UpdateDate',date("Y-m-d H:i:s"));
+        $this->db->where('Id', $data_id);
+        return $this->db->update($table_name);
+    }
+    public function delete_class($table_name,$data_id){
+        $this->db->where('Id', $data_id);
+        return $this->db->delete($table_name);
+    }
 }

@@ -81,10 +81,67 @@ class Classes extends CI_Controller
     }
 
     public function modify(){
-        $this->load->view('public_program/classes/classes');
+        $table_name = $this->input->get('table_name',true);
+        $id = $this->input->get('id',true);
+        $query = $this->Classes_model->get_class($table_name,$id);
+        $data['item'] = $query;
+        $data['table_name'] = xss_clean($table_name);
+        $this->load->view('public_program/classes/classes_mdy',$data);
     }
     public function modify_save(){
+        $table_name = $this->input->post('table_name',true);
+        $id = $this->input->post('id',true);
+        $class_name = $this->input->post('class_name',true);
+        if($this->Classes_model->mdy_class($table_name,$id,$class_name,$this->session->user_name)){
+            $data['rtn_message'] = "更新成功！";
+        }else{
+            $data['rtn_message'] = "更新失敗！";
+        }
+        $query = $this->Classes_model->get_class($table_name,$id);
+        $data['item'] = $query;
+        $data['table_name'] = xss_clean($table_name);
+        $this->load->view('public_program/classes/classes_mdy',$data);
+    }
 
+    public function delete(){
+        $del_id=$this->input->get('del_id',true);
+        $table_name=$this->input->get('table_name',true);
+
+        $result=true;
+        for($i = 0 ; $i<count($del_id) ;$i++) {
+            $this->Classes_model->delete_class($table_name,$del_id[$i]) ;
+        }
+        if($result){
+            $data['rtn_message'] = "刪除成功！";
+        }else{
+            $data['rtn_message'] = "刪除失敗！";
+        }
+
+        $this->load->library('pagination');
+
+        $table_name = $this->input->get('table_name');
+        $keyword =  $this->input->get('keyword');
+        //接收第幾頁
+        $page = $this->input->get('page',TRUE);
+        if(!$page){
+            $page = '1';
+        }
+        //先取得總共有多少資料
+        $config['total_rows'] = $this->Classes_model->get_classes_count($table_name,$keyword);
+        //該頁的網址
+        $config['base_url'] = base_url().'classes/index';
+        //幾筆為一頁
+        $config['per_page'] = 15;
+        $start = $config['per_page'] * ($page-1);
+        //開始撈資料
+        $query = $this->Classes_model->get_classes($table_name,$keyword,$config['per_page'],$start);
+
+        $data['classes'] = $query;
+        $data['table_name'] = xss_clean($table_name);
+
+        $data['subject'] = xss_clean($keyword);
+        $this->pagination->initialize($config);
+        $this->load->view('public_program/classes/classes', $data);
     }
 
     private function get_data_id($table_name){

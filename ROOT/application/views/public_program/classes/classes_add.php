@@ -35,7 +35,7 @@
         </div>
         <div class='panel-body'>
                 <?php
-                $attributes = array('class' => 'form-horizontal','role'=>'form', 'name' => 'class_form', 'method' => 'post');
+                $attributes = array('class' => 'form-horizontal','role'=>'form', 'name' => 'class_form','id'=>'class_form', 'method' => 'post');
                 echo form_open('classes/add_save', $attributes);
                 ?>
                 <input type="hidden" name="table_name" value="<?php echo $table_name ?>">
@@ -47,7 +47,7 @@
                 </div>
                 <div class='form-group' id="folder_bottom_button">
                     <div class='control-label col-xs-6 col-md-6 col-md-offset-2'>
-                        <input type="button" class='btn-lg btn-primary' style='float:right' value="儲存">
+                        <input type="button" class='btn-lg btn-primary' style='float:right' id="addsave" value="儲存">
                     </div>
                     <div class='control-label col-xs-6 col-md-6 col-md-offset-2'>
                         <input type="button" class='btn-lg btn-danger' style='float:right'

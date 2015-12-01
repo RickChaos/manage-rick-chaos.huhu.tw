@@ -14,14 +14,19 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo css_url("bootstrap.min.css"); ?>" rel="stylesheet">
     <script src="<?php echo js_url("jquery2.0.2.js"); ?>"></script>
-
+    <script src="<?php echo js_url("public_program/classes.js"); ?>"></script>
+    <script>
+        <?php if(isset($rtn_message)){ ?>
+        alert('<?php echo $rtn_message ?>');
+        <?php }?>
+    </script>
 </head>
 
 <body>
 
 <div style="width:100%;padding:50px">
     <?php
-    $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'classes_form', 'method' => 'get');
+    $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'classes_form', 'id'=>'classes_form','method' => 'get');
     echo form_open('classes/index', $attributes);
     ?>
     <div class="row">
@@ -47,7 +52,7 @@
                     onclick="location.href='<?php echo base_url('classes/add') ?>?table_name=<?php echo $table_name ?>'">
                 新增
             </button>
-            <button type="submit" value="刪除" class="btn btn-sm btn-danger" onclick="del();">刪除</button>
+            <button type="submit" value="刪除" class="btn btn-sm btn-danger" id="del">刪除</button>
         </div>
     </div>
     <div class="row">
@@ -73,10 +78,10 @@
                         }
                         ?>
                         <tr <?php echo $tr_style ?>>
-                            <td><input type="checkbox" value="<?php echo xss_clean($class->Id) ?>"></td>
+                            <td><input type="checkbox" value="<?php echo xss_clean($class->Id) ?>" name="del_id[]"</td>
                             <td><?php echo $i + 1 ?></td>
                             <td>
-                                <a href="<?php echo base_url("classes/mdy") ?>/<?php echo xss_clean($class->Id) ?>?table_name=<?php echo $table_name ?>"><?php echo xss_clean($class->Subject) ?>
+                                <a href="<?php echo base_url("classes/mdy") ?>?table_name=<?php echo $table_name ?>&id=<?php echo $class->Id?>"><?php echo xss_clean($class->Subject) ?>
                             </td>
                             <td><?php echo xss_clean($class->CreateDate) ?></td>
                             <td><?php echo xss_clean($class->UpdateDate) ?></td>
