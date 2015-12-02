@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>分類維護</title>
+    <title>選單維護</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo css_url("bootstrap.min.css"); ?>" rel="stylesheet">
     <script src="<?php echo js_url("jquery2.0.2.js"); ?>"></script>
-    <script src="<?php echo js_url("public_program/classes.js"); ?>"></script>
+    <script src="<?php echo js_url("public_program/message.js"); ?>"></script>
     <script>
         <?php if(isset($rtn_message)){ ?>
         alert('<?php echo $rtn_message ?>');
@@ -86,14 +86,14 @@
                             <td><?php echo xss_clean($class->CreateDate) ?></td>
                             <td><?php echo xss_clean($class->UpdateDate) ?></td>
                         </tr>
-                    <?php $i++;} ?>
+                        <?php $i++;} ?>
                     </tbody>
                 </table>
                 <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>
-<?php echo form_close(); ?>
+    <?php echo form_close(); ?>
 </div>
 </body>
 

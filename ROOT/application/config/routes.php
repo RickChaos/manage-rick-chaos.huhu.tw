@@ -105,8 +105,9 @@ $route['content/member_search'] = 'content/member_mdy/member_search';
 $route['content/member_add'] = 'content/member_mdy/member_add';
 $route['content/member_add_save'] = 'content/member_mdy/member_add_save';
 
-/*---- 訊息功能  ----*/
+/*---- 訊息維護  ----*/
 $route['message/index'] = 'public_program/message/index';
+$route['message/add'] = 'public_program/message/add';
 
 /*---- 共用分類  ----*/
 $route['classes/index'] = 'public_program/classes/index';
@@ -115,6 +116,7 @@ $route['classes/add_save'] = 'public_program/classes/add_save';
 $route['classes/mdy'] = 'public_program/classes/modify';
 $route['classes/mdy_save'] = 'public_program/classes/modify_save';
 $route['classes/del'] = 'public_program/classes/delete';
+
 
 /*---- WebLog  ----*/
 $route['weblog/index'] = 'content/weblog/index';
