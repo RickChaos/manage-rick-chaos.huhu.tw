@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>選單維護</title>
+    <title>訊息維護</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo css_url("bootstrap.min.css"); ?>" rel="stylesheet">
@@ -26,8 +26,8 @@
 
 <div style="width:100%;padding:50px">
     <?php
-    $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'classes_form', 'id'=>'classes_form','method' => 'get');
-    echo form_open('classes/index', $attributes);
+    $attributes = array('class' => 'form col-md-12 center-block', 'name' => 'message_form', 'id'=>'message_form','method' => 'get');
+    echo form_open('message/index', $attributes);
     ?>
     <div class="row">
         <h2>分類維護</h2>
